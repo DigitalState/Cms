@@ -1,0 +1,107 @@
+imports:
+    - { resource: security.yml }
+    - { resource: services.yml }
+
+parameters:
+    locale: en
+
+framework:
+    #esi: ~
+    translator: { fallbacks: ['%locale%'] }
+    secret: '%secret%'
+    router:
+        resource: '%kernel.root_dir%/config/routing.yml'
+        strict_requirements: ~
+    form: ~
+    csrf_protection: false
+    validation: { enable_annotations: true }
+    serializer: { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    default_locale: '%locale%'
+    trusted_hosts: ~
+    trusted_proxies: ~
+    session:
+        handler_id: ds.session.handler.pdo
+    fragments: ~
+    http_method_override: true
+    assets: ~
+    php_errors:
+        log: true
+
+twig:
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+
+doctrine:
+    dbal:
+        driver: pdo_mysql
+        host: '%database_host%'
+        port: '%database_port%'
+        dbname: '%database_name%'
+        user: '%database_user%'
+        password: '%database_password%'
+        charset:  UTF8
+    orm:
+        auto_generate_proxy_classes: '%kernel.debug%'
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+
+doctrine_migrations:
+    dir_name: '%kernel.root_dir%/Migrations'
+    namespace: Migrations
+    table_name: ds_migration
+    name: Application Migrations
+
+knp_doctrine_behaviors:
+    blameable: true
+    geocodable: false
+    loggable: false
+    sluggable: false
+    sortable: false
+    timestampable: true
+    translatable: true
+    tree: false
+
+lexik_jwt_authentication:
+    private_key_path: '%jwt_private_key_path%'
+    public_key_path: '%jwt_public_key_path%'
+    pass_phrase: '%jwt_key_pass_phrase%'
+    token_ttl: '%jwt_token_ttl%'
+
+swiftmailer:
+    transport: '%mailer_transport%'
+    host: '%mailer_host%'
+    username: '%mailer_user%'
+    password: '%mailer_password%'
+    spool: { type: memory }
+
+nelmio_cors:
+    defaults:
+        allow_origin: ['%cors_allow_origin%']
+        allow_methods: ['POST', 'PUT', 'GET', 'DELETE', 'OPTIONS']
+        allow_headers: ['content-type', 'authorization']
+        expose_headers: ['link']
+        max_age: 3600
+    paths:
+        '^/': ~
+
+dunglas_action:
+    directories:
+        - ../src/*/Bundle/*Bundle/Action
+
+api_platform:
+    title: Cms
+    description: The DigitalState Cms Api
+    version: 1.0.0
+    default_operation_path_resolver: api_platform.operation_path_resolver.dash
+    eager_loading:
+        force_eager: false
+    enable_swagger: false
+    enable_swagger_ui: false
+
+ds_model:
+    behavior:
+        uuidentifiable: ~
+        translatable: ~
+        localizable: ~
