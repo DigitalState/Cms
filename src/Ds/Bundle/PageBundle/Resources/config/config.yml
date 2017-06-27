@@ -1,0 +1,7 @@
+parameters:
+    _page: Ds\Bundle\PageBundle\Entity\Page
+
+ds_security:
+    permissions:
+        page:            { title: Page,        entity: '%_page%',           attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
+        page_field:      { title: All Fields,  field:  '%_page%.*',         attributes: [BROWSE, READ, EDIT] }

@@ -1,0 +1,11 @@
+parameters:
+    _dashboard: Ds\Bundle\DashboardBundle\Entity\Dashboard
+    _widget: Ds\Bundle\DashboardBundle\Entity\Widget
+
+ds_security:
+    permissions:
+        dashboard:            { title: Dashboard,   entity: '%_dashboard%',           attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
+        dashboard_field:      { title: All Fields,  field:  '%_dashboard%.*',         attributes: [BROWSE, READ, EDIT] }
+
+        widget:               { title: Widget,      entity: '%_widget%',              attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
+        widget_field:         { title: All Fields,  field:  '%_widget%.*',            attributes: [BROWSE, READ, EDIT] }

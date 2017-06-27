@@ -1,0 +1,7 @@
+parameters:
+    _template: Ds\Bundle\TemplateBundle\Entity\Template
+
+ds_security:
+    permissions:
+        template:            { title: Template,    entity: '%_template%',           attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
+        template_field:      { title: All Fields,  field:  '%_template%.*',         attributes: [BROWSE, READ, EDIT] }
