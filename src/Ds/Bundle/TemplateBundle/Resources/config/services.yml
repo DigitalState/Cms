@@ -1,1 +1,34 @@
 services:
+    ds_template.service.template:
+        class: Ds\Bundle\TemplateBundle\Service\TemplateService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - Ds\Bundle\TemplateBundle\Entity\Template
+
+    ds_template.filter.template.search:
+        parent: api_platform.doctrine.orm.search_filter
+        arguments:
+            - { id: exact, uuid: exact, owner: exact, ownerUuid: exact }
+        tags:
+            - { name: api_platform.filter, id: ds.template.search }
+
+    ds_template.filter.template.search_translation:
+        parent: ds_translation.doctrine.orm.filter.search
+        arguments:
+            - { title: partial }
+        tags:
+            - { name: api_platform.filter, id: ds.template.search_translation }
+
+    ds_template.filter.template.date:
+        parent: api_platform.doctrine.orm.date_filter
+        arguments:
+            - { createdAt: ~, updatedAt: ~, deletedAt: ~ }
+        tags:
+            - { name: api_platform.filter, id: ds.template.date }
+
+    ds_template.filter.template.order:
+        parent: api_platform.doctrine.orm.order_filter
+        arguments:
+            - { id: ~, createdAt: ~, updatedAt: ~, deletedAt: ~, owner: ~ }
+        tags:
+            - { name: api_platform.filter, id: ds.template.order }

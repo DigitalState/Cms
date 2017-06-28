@@ -1,1 +1,68 @@
 services:
+    ds_dashboard.service.dashboard:
+        class: Ds\Bundle\DashboardBundle\Service\DashboardService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - Ds\Bundle\DashboardBundle\Entity\Dashboard
+
+    ds_dashboard.service.widget:
+        class: Ds\Bundle\DashboardBundle\Service\WidgetService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - Ds\Bundle\DashboardBundle\Entity\Widget
+
+    ds_dashboard.filter.dashboard.search:
+        parent: api_platform.doctrine.orm.search_filter
+        arguments:
+            - { id: exact, uuid: exact, owner: exact, ownerUuid: exact }
+        tags:
+            - { name: api_platform.filter, id: ds.dashboard.search }
+
+    ds_dashboard.filter.dashboard.search_translation:
+        parent: ds_translation.doctrine.orm.filter.search
+        arguments:
+            - { title: partial }
+        tags:
+            - { name: api_platform.filter, id: ds.dashboard.search_translation }
+
+    ds_dashboard.filter.dashboard.date:
+        parent: api_platform.doctrine.orm.date_filter
+        arguments:
+            - { createdAt: ~, updatedAt: ~, deletedAt: ~ }
+        tags:
+            - { name: api_platform.filter, id: ds.dashboard.date }
+
+    ds_dashboard.filter.dashboard.order:
+        parent: api_platform.doctrine.orm.order_filter
+        arguments:
+            - { id: ~, createdAt: ~, updatedAt: ~, deletedAt: ~, owner: ~ }
+        tags:
+            - { name: api_platform.filter, id: ds.dashboard.order }
+
+    ds_dashboard.filter.widget.search:
+        parent: api_platform.doctrine.orm.search_filter
+        arguments:
+            - { id: exact, uuid: exact, owner: exact, ownerUuid: exact }
+        tags:
+            - { name: api_platform.filter, id: ds.widget.search }
+
+    ds_dashboard.filter.widget.search_translation:
+        parent: ds_translation.doctrine.orm.filter.search
+        arguments:
+            - { title: partial }
+        tags:
+            - { name: api_platform.filter, id: ds.widget.search_translation }
+
+    ds_dashboard.filter.widget.date:
+        parent: api_platform.doctrine.orm.date_filter
+        arguments:
+            - { createdAt: ~, updatedAt: ~, deletedAt: ~ }
+        tags:
+            - { name: api_platform.filter, id: ds.widget.date }
+
+    ds_dashboard.filter.widget.order:
+        parent: api_platform.doctrine.orm.order_filter
+        arguments:
+            - { id: ~, createdAt: ~, updatedAt: ~, deletedAt: ~, owner: ~ }
+        tags:
+            - { name: api_platform.filter, id: ds.widget.order }
