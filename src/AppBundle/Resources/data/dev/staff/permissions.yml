@@ -1,0 +1,73 @@
+items:
+    -
+        access: 37b4da57-4444-47f5-92ee-bcf09e415f4e # Any staff
+        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
+        key:
+            - data
+            - data_property
+            - file
+            - file_property
+            - text
+            - text_property
+            - dashboard
+            - dashboard_property
+            - widget
+            - widget_property
+            - page
+            - page_property
+            - template
+            - template_property
+        attributes: [BROWSE, READ]
+
+    -
+        access: 8eb4a622-1249-40ce-b5c8-268f0d9475a6 # Manager
+        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
+        key:
+            - data
+            - file
+            - text
+            - dashboard
+            - widget
+            - page
+            - template
+        attributes: [EDIT, ADD, DELETE]
+
+    -
+        access: 8eb4a622-1249-40ce-b5c8-268f0d9475a6 # Manager
+        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
+        key:
+            - data_property
+            - file_property
+            - text_property
+            - dashboard_property
+            - widget_property
+            - page_property
+            - template_property
+        attributes: [EDIT]
+
+    -
+        access: 08ffdab5-cc48-44e5-afbf-1a7c00bd9945 # Agent
+        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
+        key:
+            - data
+            - data_property
+            - file
+            - file_property
+            - text
+            - text_property
+            - dashboard
+            - dashboard_property
+            - widget
+            - widget_property
+            - page
+            - page_property
+            - template
+            - template_property
+        attributes: [EDIT]
+
+prototype:
+    access: ~
+    entity: BusinessUnit
+    entity_uuid: ~
+    key: ~
+    attributes: []

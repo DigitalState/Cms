@@ -1,0 +1,42 @@
+services:
+    app.service.data:
+        class: AppBundle\Service\DataService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - AppBundle\Entity\Data
+
+    app.service.file:
+        class: AppBundle\Service\FileService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - AppBundle\Entity\File
+
+    app.service.text:
+        class: AppBundle\Service\TextService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - AppBundle\Entity\Text
+
+    app.service.dashboard:
+        class: AppBundle\Service\DashboardService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - AppBundle\Entity\Dashboard
+
+    app.service.widget:
+        class: AppBundle\Service\WidgetService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - AppBundle\Entity\Widget
+
+    app.service.page:
+        class: AppBundle\Service\PageService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - AppBundle\Entity\Page
+
+    app.service.template:
+        class: AppBundle\Service\TemplateService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - AppBundle\Entity\Template

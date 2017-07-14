@@ -1,0 +1,27 @@
+items:
+    -
+        access: 214a3c74-510d-4e8b-a333-febdbb81a990 # Any anonymous
+        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
+        key:
+            - data
+            - data_property
+            - file
+            - file_property
+            - text
+            - text_property
+            - dashboard
+            - dashboard_property
+            - widget
+            - widget_property
+            - page
+            - page_property
+            - template
+            - template_property
+        attributes: [BROWSE, READ]
+
+prototype:
+    access: ~
+    entity: BusinessUnit
+    entity_uuid: ~
+    key: ~
+    attributes: []

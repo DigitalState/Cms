@@ -1,0 +1,196 @@
+services:
+    app.filter.data.search:
+        parent: api_platform.doctrine.orm.search_filter
+        arguments:
+            - { id: exact, uuid: exact, owner: exact, ownerUuid: exact }
+        tags:
+            - { name: api_platform.filter, id: app.data.search }
+
+    app.filter.data.search_translation:
+        parent: ds_translation.doctrine.orm.filter.search
+        arguments:
+            - { title: partial }
+        tags:
+            - { name: api_platform.filter, id: app.data.search_translation }
+
+    app.filter.data.date:
+        parent: api_platform.doctrine.orm.date_filter
+        arguments:
+            - { createdAt: ~, updatedAt: ~, deletedAt: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.data.date }
+
+    app.filter.data.order:
+        parent: api_platform.doctrine.orm.order_filter
+        arguments:
+            - { id: ~, createdAt: ~, updatedAt: ~, deletedAt: ~, owner: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.data.order }
+
+    app.filter.file.search:
+        parent: api_platform.doctrine.orm.search_filter
+        arguments:
+            - { id: exact, uuid: exact, owner: exact, ownerUuid: exact }
+        tags:
+            - { name: api_platform.filter, id: app.file.search }
+
+    app.filter.file.search_translation:
+        parent: ds_translation.doctrine.orm.filter.search
+        arguments:
+            - { title: partial }
+        tags:
+            - { name: api_platform.filter, id: app.file.search_translation }
+
+    app.filter.file.date:
+        parent: api_platform.doctrine.orm.date_filter
+        arguments:
+            - { createdAt: ~, updatedAt: ~, deletedAt: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.file.date }
+
+    app.filter.file.order:
+        parent: api_platform.doctrine.orm.order_filter
+        arguments:
+            - { id: ~, createdAt: ~, updatedAt: ~, deletedAt: ~, owner: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.file.order }
+
+    app.filter.text.search:
+        parent: api_platform.doctrine.orm.search_filter
+        arguments:
+            - { id: exact, uuid: exact, owner: exact, ownerUuid: exact }
+        tags:
+            - { name: api_platform.filter, id: app.text.search }
+
+    app.filter.text.search_translation:
+        parent: ds_translation.doctrine.orm.filter.search
+        arguments:
+            - { title: partial }
+        tags:
+            - { name: api_platform.filter, id: app.text.search_translation }
+
+    app.filter.text.date:
+        parent: api_platform.doctrine.orm.date_filter
+        arguments:
+            - { createdAt: ~, updatedAt: ~, deletedAt: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.text.date }
+
+    app.filter.text.order:
+        parent: api_platform.doctrine.orm.order_filter
+        arguments:
+            - { id: ~, createdAt: ~, updatedAt: ~, deletedAt: ~, owner: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.text.order }
+
+    app.filter.dashboard.search:
+        parent: api_platform.doctrine.orm.search_filter
+        arguments:
+            - { id: exact, uuid: exact, owner: exact, ownerUuid: exact }
+        tags:
+            - { name: api_platform.filter, id: app.dashboard.search }
+
+    app.filter.dashboard.search_translation:
+        parent: ds_translation.doctrine.orm.filter.search
+        arguments:
+            - { title: partial }
+        tags:
+            - { name: api_platform.filter, id: app.dashboard.search_translation }
+
+    app.filter.dashboard.date:
+        parent: api_platform.doctrine.orm.date_filter
+        arguments:
+            - { createdAt: ~, updatedAt: ~, deletedAt: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.dashboard.date }
+
+    app.filter.dashboard.order:
+        parent: api_platform.doctrine.orm.order_filter
+        arguments:
+            - { id: ~, createdAt: ~, updatedAt: ~, deletedAt: ~, owner: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.dashboard.order }
+
+    app.filter.widget.search:
+        parent: api_platform.doctrine.orm.search_filter
+        arguments:
+            - { id: exact, uuid: exact, owner: exact, ownerUuid: exact }
+        tags:
+            - { name: api_platform.filter, id: app.widget.search }
+
+    app.filter.widget.search_translation:
+        parent: ds_translation.doctrine.orm.filter.search
+        arguments:
+            - { title: partial }
+        tags:
+            - { name: api_platform.filter, id: app.widget.search_translation }
+
+    app.filter.widget.date:
+        parent: api_platform.doctrine.orm.date_filter
+        arguments:
+            - { createdAt: ~, updatedAt: ~, deletedAt: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.widget.date }
+
+    app.filter.widget.order:
+        parent: api_platform.doctrine.orm.order_filter
+        arguments:
+            - { id: ~, createdAt: ~, updatedAt: ~, deletedAt: ~, owner: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.widget.order }
+
+    app.filter.page.search:
+        parent: api_platform.doctrine.orm.search_filter
+        arguments:
+            - { id: exact, uuid: exact, owner: exact, ownerUuid: exact }
+        tags:
+            - { name: api_platform.filter, id: app.page.search }
+
+    app.filter.page.search_translation:
+        parent: ds_translation.doctrine.orm.filter.search
+        arguments:
+            - { title: partial }
+        tags:
+            - { name: api_platform.filter, id: app.page.search_translation }
+
+    app.filter.page.date:
+        parent: api_platform.doctrine.orm.date_filter
+        arguments:
+            - { createdAt: ~, updatedAt: ~, deletedAt: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.page.date }
+
+    app.filter.page.order:
+        parent: api_platform.doctrine.orm.order_filter
+        arguments:
+            - { id: ~, createdAt: ~, updatedAt: ~, deletedAt: ~, owner: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.page.order }
+
+    app.filter.template.search:
+        parent: api_platform.doctrine.orm.search_filter
+        arguments:
+            - { id: exact, uuid: exact, owner: exact, ownerUuid: exact }
+        tags:
+            - { name: api_platform.filter, id: app.template.search }
+
+    app.filter.template.search_translation:
+        parent: ds_translation.doctrine.orm.filter.search
+        arguments:
+            - { title: partial }
+        tags:
+            - { name: api_platform.filter, id: app.template.search_translation }
+
+    app.filter.template.date:
+        parent: api_platform.doctrine.orm.date_filter
+        arguments:
+            - { createdAt: ~, updatedAt: ~, deletedAt: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.template.date }
+
+    app.filter.template.order:
+        parent: api_platform.doctrine.orm.order_filter
+        arguments:
+            - { id: ~, createdAt: ~, updatedAt: ~, deletedAt: ~, owner: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.template.order }
