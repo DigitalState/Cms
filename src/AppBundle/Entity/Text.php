@@ -2,18 +2,21 @@
 
 namespace AppBundle\Entity;
 
+use Ds\Component\Locale\Model\Type\Localizable;
 use Ds\Component\Model\Attribute\Accessor;
 use Ds\Component\Model\Type\Identifiable;
 use Ds\Component\Model\Type\Ownable;
-use Ds\Component\Model\Type\Translatable;
+use Ds\Component\Model\Type\Sluggable;
 use Ds\Component\Model\Type\Uuidentifiable;
 use Ds\Component\Model\Type\Versionable;
+use Ds\Component\Translation\Model\Attribute\Accessor as TranslationAccessor;
+use Ds\Component\Translation\Model\Type\Translatable;
 use Knp\DoctrineBehaviors\Model as Behavior;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use Doctrine\ORM\Mapping as ORM;
-use Ds\Component\Model\Annotation\Translate;
+use Ds\Component\Locale\Model\Annotation\Localized;
 use Symfony\Bridge\Doctrine\Validator\Constraints as ORMAssert;
 use Symfony\Component\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -40,8 +43,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TextRepository")
  * @ORM\Table(name="app_text")
  * @ORMAssert\UniqueEntity(fields="uuid")
+ * @ORMAssert\UniqueEntity(fields="slug")
  */
-class Text implements Identifiable, Uuidentifiable, Ownable, Translatable, Versionable
+class Text implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translatable, Localizable, Versionable
 {
     use Behavior\Translatable\Translatable;
     use Behavior\Timestampable\Timestampable;
@@ -51,7 +55,9 @@ class Text implements Identifiable, Uuidentifiable, Ownable, Translatable, Versi
     use Accessor\Uuid;
     use Accessor\Owner;
     use Accessor\OwnerUuid;
-    use Accessor\Translation\Title;
+    use Accessor\Slug;
+    use TranslationAccessor\Title;
+    use TranslationAccessor\Value;
     use Accessor\Version;
 
     /**
@@ -115,6 +121,16 @@ class Text implements Identifiable, Uuidentifiable, Ownable, Translatable, Versi
     protected $ownerUuid;
 
     /**
+     * @var string
+     * @ApiProperty
+     * @Serializer\Groups({"text_output", "text_input"})
+     * @ORM\Column(name="slug", type="string", unique=true)
+     * @Assert\NotBlank
+     * @Assert\Length(min=1, max=255)
+     */
+    protected $slug;
+
+    /**
      * @var array
      * @ApiProperty
      * @Serializer\Groups({"text_output", "text_input"})
@@ -124,9 +140,23 @@ class Text implements Identifiable, Uuidentifiable, Ownable, Translatable, Versi
      *     @Assert\NotBlank,
      *     @Assert\Length(min=1)
      * })
-     * @Translate
+     * @Localized
      */
     protected $title;
+
+    /**
+     * @var array
+     * @ApiProperty
+     * @Serializer\Groups({"text_output", "text_input"})
+     * @Assert\Type("array")
+     * @Assert\NotBlank
+     * @Assert\All({
+     *     @Assert\NotBlank,
+     *     @Assert\Length(min=1)
+     * })
+     * @Localized
+     */
+    protected $value;
 
     /**
      * @var integer
@@ -145,5 +175,6 @@ class Text implements Identifiable, Uuidentifiable, Ownable, Translatable, Versi
     public function __construct()
     {
         $this->title = [];
+        $this->value = [];
     }
 }

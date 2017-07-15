@@ -17,3 +17,4 @@ security:
         - { path: ^/permissions,    role: IS_AUTHENTICATED_FULLY }
         - { path: ^/accesses,       role: IS_AUTHENTICATED_FULLY }
         - { path: ^/configs,        role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/content,        role: IS_AUTHENTICATED_ANONYMOUSLY }

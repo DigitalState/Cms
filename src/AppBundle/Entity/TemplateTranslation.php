@@ -16,8 +16,6 @@ use Doctrine\ORM\Mapping as ORM;
 class TemplateTranslation
 {
     use Behavior\Translatable\Translation;
-    use Behavior\Timestampable\Timestampable;
-    use Behavior\SoftDeletable\SoftDeletable;
 
     use Accessor\Title;
 

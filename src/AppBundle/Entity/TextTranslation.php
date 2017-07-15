@@ -16,14 +16,19 @@ use Doctrine\ORM\Mapping as ORM;
 class TextTranslation
 {
     use Behavior\Translatable\Translation;
-    use Behavior\Timestampable\Timestampable;
-    use Behavior\SoftDeletable\SoftDeletable;
 
     use Accessor\Title;
+    use Accessor\Value;
 
     /**
      * @var string
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
     protected $title;
+
+    /**
+     * @var string
+     * @ORM\Column(name="value", type="string", length=255, nullable=true)
+     */
+    protected $value;
 }

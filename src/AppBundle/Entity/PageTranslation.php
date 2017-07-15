@@ -16,14 +16,19 @@ use Doctrine\ORM\Mapping as ORM;
 class PageTranslation
 {
     use Behavior\Translatable\Translation;
-    use Behavior\Timestampable\Timestampable;
-    use Behavior\SoftDeletable\SoftDeletable;
 
     use Accessor\Title;
+    use Accessor\Description;
 
     /**
      * @var string
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
     protected $title;
+
+    /**
+     * @var string
+     * @ORM\Column(name="description", type="string", length=255, nullable=true)
+     */
+    protected $description;
 }

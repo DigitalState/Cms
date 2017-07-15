@@ -16,14 +16,27 @@ use Doctrine\ORM\Mapping as ORM;
 class DataTranslation
 {
     use Behavior\Translatable\Translation;
-    use Behavior\Timestampable\Timestampable;
-    use Behavior\SoftDeletable\SoftDeletable;
 
     use Accessor\Title;
+    use Accessor\Data;
 
     /**
      * @var string
      * @ORM\Column(name="title", type="string", length=255)
      */
     protected $title;
+
+    /**
+     * @var string
+     * @ORM\Column(name="data", type="json_array")
+     */
+    protected $data;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->data = [];
+    }
 }

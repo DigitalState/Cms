@@ -4,3 +4,7 @@ api:
 
 ds_security:
     resource: '@DsSecurityBundle/Resources/config/routing.yml'
+
+app_action:
+    resource: '@AppBundle/Action/'
+    type: annotation
