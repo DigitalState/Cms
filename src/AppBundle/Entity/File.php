@@ -55,6 +55,8 @@ class File implements Identifiable, Uuidentifiable, Ownable, Translatable, Local
     use Accessor\Owner;
     use Accessor\OwnerUuid;
     use TranslationAccessor\Title;
+    use TranslationAccessor\Description;
+    use TranslationAccessor\Presentation;
     use Accessor\Version;
 
     /**
@@ -131,6 +133,36 @@ class File implements Identifiable, Uuidentifiable, Ownable, Translatable, Local
      * @Translate
      */
     protected $title;
+
+    /**
+     * @var array
+     * @ApiProperty
+     * @Serializer\Groups({"file_output", "file_input"})
+     * @Assert\Type("array")
+     * @Assert\NotBlank
+     * @Assert\All({
+     *     @Assert\NotBlank,
+     *     @Assert\Length(min=1)
+     * })
+     * @Locale
+     * @Translate
+     */
+    protected $description;
+
+    /**
+     * @var array
+     * @ApiProperty
+     * @Serializer\Groups({"file_output", "file_input"})
+     * @Assert\Type("array")
+     * @Assert\NotBlank
+     * @Assert\All({
+     *     @Assert\NotBlank,
+     *     @Assert\Length(min=1)
+     * })
+     * @Locale
+     * @Translate
+     */
+    protected $presentation;
 
     /**
      * @var integer

@@ -21,6 +21,8 @@ ds_security:
         file_owner:              { title: app.permissions.file.owner,               property:  AppBundle\Entity\File.owner,             attributes: [BROWSE, READ, EDIT] }
         file_owner_uuid:         { title: app.permissions.file.owner_uuid,          property:  AppBundle\Entity\File.ownerUuid,         attributes: [BROWSE, READ, EDIT] }
         file_title:              { title: app.permissions.file.title,               property:  AppBundle\Entity\File.title,             attributes: [BROWSE, READ, EDIT] }
+        file_description:        { title: app.permissions.file.description,         property:  AppBundle\Entity\File.description,       attributes: [BROWSE, READ, EDIT] }
+        file_presentation:       { title: app.permissions.file.presentation,        property:  AppBundle\Entity\File.presentation,      attributes: [BROWSE, READ, EDIT] }
         file_version:            { title: app.permissions.file.version,             property:  AppBundle\Entity\File.version,           attributes: [BROWSE, READ, EDIT] }
         text:                    { title: app.permissions.text,                     entity:    AppBundle\Entity\Text,                   attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
         text_property:           { title: app.permissions.text.property,            property:  AppBundle\Entity\Text.*,                 attributes: [BROWSE, READ, EDIT] }
