@@ -17,6 +17,7 @@ items:
             - page_property
             - template
             - template_property
+            - content
         attributes: [BROWSE, READ]
 
 prototype:

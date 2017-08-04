@@ -79,3 +79,4 @@ ds_security:
         template_owner_uuid:     { title: app.permissions.template.owner_uuid,      property:  AppBundle\Entity\Template.ownerUuid,     attributes: [BROWSE, READ, EDIT] }
         template_title:          { title: app.permissions.template.title,           property:  AppBundle\Entity\Template.title,         attributes: [BROWSE, READ, EDIT] }
         template_version:        { title: app.permissions.template.version,         property:  AppBundle\Entity\Template.version,       attributes: [BROWSE, READ, EDIT] }
+        content:                 { title: app.permissions.content,                  custom:    Content,                                 attributes: [BROWSE, READ] }

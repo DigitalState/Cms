@@ -10,11 +10,15 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class ContentAction
+ *
+ * @ApiResource
  */
 class ContentAction
 {
@@ -59,6 +63,7 @@ class ContentAction
      *
      * @Method("GET")
      * @Route(path="/content")
+     * @Security("is_granted('BROWSE', 'content')")
      */
     public function get()
     {
