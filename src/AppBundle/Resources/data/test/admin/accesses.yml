@@ -1,7 +1,8 @@
-permissions: []
+items: []
 
 prototype:
     uuid: ~
     owner: BusinessUnit
     owner_uuid: ~
-    user_uuid: ~
+    identity: ~
+    identity_uuid: ~
