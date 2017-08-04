@@ -1,0 +1,52 @@
+items:
+    -
+        uuid: 1f0a37cf-864c-4995-92ae-454e334d02a3
+        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
+        slug: portal-title
+        title:
+            en: Portal Title
+            fr: Titre du portail
+        value:
+            en: DigitalState
+            fr: DigitalState
+
+    -
+        uuid: e0bc9d13-3b37-4080-850a-d7b38756cd83
+        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
+        slug: portal-description
+        title:
+            en: Portal Description
+            fr: Description du portail
+        value:
+            en: Digital Public Services Platform
+            fr: Plate-forme de services publics numériques
+
+    -
+        uuid: f33ca03e-f177-4589-a9c2-632b90696d5e
+        owner_uuid: c11c546e-bd01-47cf-97da-e25388357b5a # Administration
+        slug: admin-title
+        title:
+            en: Admin Title
+            fr: Titre de l'administration
+        value:
+            en: DigitalState
+            fr: DigitalState
+
+    -
+        uuid: c79a584e-eb42-48d8-8784-4ab60927fc64
+        owner_uuid: c11c546e-bd01-47cf-97da-e25388357b5a # Administration
+        slug: admin-description
+        title:
+            en: Admin Description
+            fr: Description de l'administration
+        value:
+            en: Digital Public Services Platform
+            fr: Plate-forme de services publics numériques
+
+prototype:
+    uuid: ~
+    owner: BusinessUnit
+    owner_uuid: ~
+    slug: ~
+    title: []
+    value: []
