@@ -3,6 +3,7 @@
 namespace AppBundle\Action;
 
 use AppBundle\Service\DataService;
+use AppBundle\Service\FileService;
 use AppBundle\Service\TextService;
 use stdClass;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -23,27 +24,34 @@ class ContentAction
     protected $requestStack;
 
     /**
-     * @var \AppBundle\Service\TextService
-     */
-    protected $textService;
-
-    /**
      * @var \AppBundle\Service\DataService
      */
     protected $dataService;
 
     /**
+     * @var \AppBundle\Service\FileService
+     */
+    protected $fileService;
+
+    /**
+     * @var \AppBundle\Service\TextService
+     */
+    protected $textService;
+
+    /**
      * Constructor
      *
      * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
-     * @param \AppBundle\Service\TextService $textService
      * @param \AppBundle\Service\DataService $dataService
+     * @param \AppBundle\Service\FileService $fileService
+     * @param \AppBundle\Service\TextService $textService
      */
-    public function __construct(RequestStack $requestStack, TextService $textService, DataService $dataService)
+    public function __construct(RequestStack $requestStack, DataService $dataService, FileService $fileService, TextService $textService)
     {
         $this->requestStack = $requestStack;
-        $this->textService = $textService;
         $this->dataService = $dataService;
+        $this->fileService = $fileService;
+        $this->textService = $textService;
     }
 
     /**
@@ -55,7 +63,7 @@ class ContentAction
     public function get()
     {
         $request = $this->requestStack->getCurrentRequest();
-        $types = ['text', 'data'];
+        $types = ['data', 'file', 'text'];
         $content = new StdClass;
 
         foreach ($types as $type) {
@@ -70,15 +78,19 @@ class ContentAction
                 }
 
                 foreach ($entities as $entity) {
-                    $content->{$type . 's'}->{$entity->getSlug()} = new stdClass;
+                    $content->{$type.'s'}->{$entity->getSlug()} = new stdClass;
 
                     switch ($type) {
-                        case 'text':
-                            $content->{$type . 's'}->{$entity->getSlug()}->value = $entity->getValue();
+                        case 'data':
+                            $content->{$type.'s'}->{$entity->getSlug()} = $entity->getData();
                             break;
 
-                        case 'data':
-                            $content->{$type . 's'}->{$entity->getSlug()}->data = $entity->getData();
+                        case 'file':
+                            $content->{$type.'s'}->{$entity->getSlug()} = $entity->getPresentation();
+                            break;
+
+                        case 'text':
+                            $content->{$type.'s'}->{$entity->getSlug()} = $entity->getValue();
                             break;
                     }
                 }
