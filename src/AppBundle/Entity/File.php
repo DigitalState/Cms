@@ -55,6 +55,7 @@ class File implements Identifiable, Uuidentifiable, Ownable, Translatable, Local
     use Accessor\Uuid;
     use Accessor\Owner;
     use Accessor\OwnerUuid;
+    use Accessor\Slug;
     use TranslationAccessor\Title;
     use TranslationAccessor\Description;
     use TranslationAccessor\Presentation;
