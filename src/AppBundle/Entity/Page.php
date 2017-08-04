@@ -43,6 +43,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PageRepository")
  * @ORM\Table(name="app_page")
  * @ORMAssert\UniqueEntity(fields="uuid")
+ * @ORMAssert\UniqueEntity(fields="slug")
  */
 class Page implements Identifiable, Uuidentifiable, Ownable, Translatable, Localizable, Versionable
 {
@@ -119,6 +120,16 @@ class Page implements Identifiable, Uuidentifiable, Ownable, Translatable, Local
     protected $ownerUuid;
 
     /**
+     * @var string
+     * @ApiProperty
+     * @Serializer\Groups({"page_output", "page_input"})
+     * @ORM\Column(name="slug", type="string", unique=true)
+     * @Assert\NotBlank
+     * @Assert\Length(min=1, max=255)
+     */
+    protected $slug;
+
+    /**
      * @var array
      * @ApiProperty
      * @Serializer\Groups({"page_output", "page_input"})
@@ -165,5 +176,6 @@ class Page implements Identifiable, Uuidentifiable, Ownable, Translatable, Local
     public function __construct()
     {
         $this->title = [];
+        $this->description = [];
     }
 }

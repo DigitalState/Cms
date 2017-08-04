@@ -178,6 +178,6 @@ class Data implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translat
     public function __construct()
     {
         $this->title = [];
-        $this->value = [];
+        $this->data = [];
     }
 }
