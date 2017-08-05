@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Ds\Component\Locale\Model\Type\Localizable;
 use Ds\Component\Model\Attribute\Accessor;
+use Ds\Component\Model\Type\Deletable;
 use Ds\Component\Model\Type\Identifiable;
 use Ds\Component\Model\Type\Ownable;
 use Ds\Component\Model\Type\Uuidentifiable;
@@ -45,7 +46,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORMAssert\UniqueEntity(fields="uuid")
  * @ORMAssert\UniqueEntity(fields="slug")
  */
-class File implements Identifiable, Uuidentifiable, Ownable, Translatable, Localizable, Versionable
+class File implements Identifiable, Uuidentifiable, Ownable, Translatable, Localizable, Deletable, Versionable
 {
     use Behavior\Translatable\Translatable;
     use Behavior\Timestampable\Timestampable;
@@ -59,6 +60,7 @@ class File implements Identifiable, Uuidentifiable, Ownable, Translatable, Local
     use TranslationAccessor\Title;
     use TranslationAccessor\Description;
     use TranslationAccessor\Presentation;
+    use Accessor\Deleted;
     use Accessor\Version;
 
     /**

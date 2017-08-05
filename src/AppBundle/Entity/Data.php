@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Ds\Component\Locale\Model\Type\Localizable;
 use Ds\Component\Model\Attribute\Accessor;
+use Ds\Component\Model\Type\Deletable;
 use Ds\Component\Model\Type\Identifiable;
 use Ds\Component\Model\Type\Ownable;
 use Ds\Component\Model\Type\Sluggable;
@@ -46,7 +47,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORMAssert\UniqueEntity(fields="uuid")
  * @ORMAssert\UniqueEntity(fields="slug")
  */
-class Data implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translatable, Localizable, Versionable
+class Data implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translatable, Localizable, Deletable, Versionable
 {
     use Behavior\Translatable\Translatable;
     use Behavior\Timestampable\Timestampable;
@@ -59,6 +60,7 @@ class Data implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translat
     use Accessor\Slug;
     use TranslationAccessor\Title;
     use TranslationAccessor\Data;
+    use Accessor\Deleted;
     use Accessor\Version;
 
     /**
