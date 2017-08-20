@@ -1,7 +1,7 @@
 items:
     -
         uuid: c859dbd2-2fc1-4b3b-b00a-00e15b1dbac0
-        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
+        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
         slug: road-classifications
         title:
             en: Road Classifications

@@ -18,4 +18,7 @@ security:
         - { path: ^/permissions,    role: IS_AUTHENTICATED_FULLY }
         - { path: ^/accesses,       role: IS_AUTHENTICATED_FULLY }
         - { path: ^/configs,        role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/datas,          role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/files,          role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/texts,          role: IS_AUTHENTICATED_FULLY }
         - { path: ^/content,        role: IS_AUTHENTICATED_ANONYMOUSLY }

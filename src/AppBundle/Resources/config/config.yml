@@ -35,28 +35,6 @@ ds_security:
         text_owner_uuid:         { title: app.permissions.text.owner_uuid,          property:  AppBundle\Entity\Text.ownerUuid,         attributes: [BROWSE, READ, EDIT] }
         text_title:              { title: app.permissions.text.title,               property:  AppBundle\Entity\Text.title,             attributes: [BROWSE, READ, EDIT] }
         text_version:            { title: app.permissions.text.version,             property:  AppBundle\Entity\Text.version,           attributes: [BROWSE, READ, EDIT] }
-        dashboard:               { title: app.permissions.dashboard,                entity:    AppBundle\Entity\Dashboard,              attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
-        dashboard_property:      { title: app.permissions.dashboard.property,       property:  AppBundle\Entity\Dashboard.*,            attributes: [BROWSE, READ, EDIT] }
-        dashboard_id:            { title: app.permissions.dashboard.id,             property:  AppBundle\Entity\Dashboard.id,           attributes: [BROWSE, READ, EDIT] }
-        dashboard_uuid:          { title: app.permissions.dashboard.uuid,           property:  AppBundle\Entity\Dashboard.uuid,         attributes: [BROWSE, READ, EDIT] }
-        dashboard_created_at:    { title: app.permissions.dashboard.created_at,     property:  AppBundle\Entity\Dashboard.createdAt,    attributes: [BROWSE, READ, EDIT] }
-        dashboard_updated_at:    { title: app.permissions.dashboard.updated_at,     property:  AppBundle\Entity\Dashboard.updatedAt,    attributes: [BROWSE, READ, EDIT] }
-        dashboard_deleted_at:    { title: app.permissions.dashboard.deleted_at,     property:  AppBundle\Entity\Dashboard.deletedAt,    attributes: [BROWSE, READ, EDIT] }
-        dashboard_owner:         { title: app.permissions.dashboard.owner,          property:  AppBundle\Entity\Dashboard.owner,        attributes: [BROWSE, READ, EDIT] }
-        dashboard_owner_uuid:    { title: app.permissions.dashboard.owner_uuid,     property:  AppBundle\Entity\Dashboard.ownerUuid,    attributes: [BROWSE, READ, EDIT] }
-        dashboard_title:         { title: app.permissions.dashboard.title,          property:  AppBundle\Entity\Dashboard.title,        attributes: [BROWSE, READ, EDIT] }
-        dashboard_version:       { title: app.permissions.dashboard.version,        property:  AppBundle\Entity\Dashboard.version,      attributes: [BROWSE, READ, EDIT] }
-        widget:                  { title: app.permissions.widget,                   entity:    AppBundle\Entity\Widget,                 attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
-        widget_property:         { title: app.permissions.widget.property,          property:  AppBundle\Entity\Widget.*,               attributes: [BROWSE, READ, EDIT] }
-        widget_id:               { title: app.permissions.widget.id,                property:  AppBundle\Entity\Widget.id,              attributes: [BROWSE, READ, EDIT] }
-        widget_uuid:             { title: app.permissions.widget.uuid,              property:  AppBundle\Entity\Widget.uuid,            attributes: [BROWSE, READ, EDIT] }
-        widget_created_at:       { title: app.permissions.widget.created_at,        property:  AppBundle\Entity\Widget.createdAt,       attributes: [BROWSE, READ, EDIT] }
-        widget_updated_at:       { title: app.permissions.widget.updated_at,        property:  AppBundle\Entity\Widget.updatedAt,       attributes: [BROWSE, READ, EDIT] }
-        widget_deleted_at:       { title: app.permissions.widget.deleted_at,        property:  AppBundle\Entity\Widget.deletedAt,       attributes: [BROWSE, READ, EDIT] }
-        widget_owner:            { title: app.permissions.widget.owner,             property:  AppBundle\Entity\Widget.owner,           attributes: [BROWSE, READ, EDIT] }
-        widget_owner_uuid:       { title: app.permissions.widget.owner_uuid,        property:  AppBundle\Entity\Widget.ownerUuid,       attributes: [BROWSE, READ, EDIT] }
-        widget_title:            { title: app.permissions.widget.title,             property:  AppBundle\Entity\Widget.title,           attributes: [BROWSE, READ, EDIT] }
-        widget_version:          { title: app.permissions.widget.version,           property:  AppBundle\Entity\Widget.version,         attributes: [BROWSE, READ, EDIT] }
         page:                    { title: app.permissions.page,                     entity:    AppBundle\Entity\Page,                   attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
         page_property:           { title: app.permissions.page.property,            property:  AppBundle\Entity\Page.*,                 attributes: [BROWSE, READ, EDIT] }
         page_id:                 { title: app.permissions.page.id,                  property:  AppBundle\Entity\Page.id,                attributes: [BROWSE, READ, EDIT] }
@@ -68,15 +46,4 @@ ds_security:
         page_owner_uuid:         { title: app.permissions.page.owner_uuid,          property:  AppBundle\Entity\Page.ownerUuid,         attributes: [BROWSE, READ, EDIT] }
         page_title:              { title: app.permissions.page.title,               property:  AppBundle\Entity\Page.title,             attributes: [BROWSE, READ, EDIT] }
         page_version:            { title: app.permissions.page.version,             property:  AppBundle\Entity\Page.version,           attributes: [BROWSE, READ, EDIT] }
-        template:                { title: app.permissions.template,                 entity:    AppBundle\Entity\Template,               attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
-        template_property:       { title: app.permissions.template.property,        property:  AppBundle\Entity\Template.*,             attributes: [BROWSE, READ, EDIT] }
-        template_id:             { title: app.permissions.template.id,              property:  AppBundle\Entity\Template.id,            attributes: [BROWSE, READ, EDIT] }
-        template_uuid:           { title: app.permissions.template.uuid,            property:  AppBundle\Entity\Template.uuid,          attributes: [BROWSE, READ, EDIT] }
-        template_created_at:     { title: app.permissions.template.created_at,      property:  AppBundle\Entity\Template.createdAt,     attributes: [BROWSE, READ, EDIT] }
-        template_updated_at:     { title: app.permissions.template.updated_at,      property:  AppBundle\Entity\Template.updatedAt,     attributes: [BROWSE, READ, EDIT] }
-        template_deleted_at:     { title: app.permissions.template.deleted_at,      property:  AppBundle\Entity\Template.deletedAt,     attributes: [BROWSE, READ, EDIT] }
-        template_owner:          { title: app.permissions.template.owner,           property:  AppBundle\Entity\Template.owner,         attributes: [BROWSE, READ, EDIT] }
-        template_owner_uuid:     { title: app.permissions.template.owner_uuid,      property:  AppBundle\Entity\Template.ownerUuid,     attributes: [BROWSE, READ, EDIT] }
-        template_title:          { title: app.permissions.template.title,           property:  AppBundle\Entity\Template.title,         attributes: [BROWSE, READ, EDIT] }
-        template_version:        { title: app.permissions.template.version,         property:  AppBundle\Entity\Template.version,       attributes: [BROWSE, READ, EDIT] }
         content:                 { title: app.permissions.content,                  custom:    Content,                                 attributes: [BROWSE, READ] }

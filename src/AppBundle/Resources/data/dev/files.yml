@@ -1,7 +1,7 @@
 items:
     -
         uuid: a4fcce84-4242-4b3e-acd9-f05320be7463
-        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
+        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
         slug: portal-logo
         title:
             en: Logo
