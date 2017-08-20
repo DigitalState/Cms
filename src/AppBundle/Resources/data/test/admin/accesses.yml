@@ -1,8 +1,12 @@
-items: []
+items:
+    -
+        uuid: 83070b42-2209-4c30-8a5a-4518f317e0cf
+        owner_uuid: d5de44e0-d727-4f69-a8b3-c3afbf75eda3 # Administration
+        identity_uuid: ~ # Any admin
 
 prototype:
     uuid: ~
     owner: BusinessUnit
     owner_uuid: ~
-    identity: ~
+    identity: Admin
     identity_uuid: ~
