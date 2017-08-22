@@ -1,4 +1,4 @@
-@entity @data @browse
+@app @entity @data @browse
 Feature: Browse datas
   In order to browse datas
   As an admin identity

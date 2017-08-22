@@ -1,4 +1,4 @@
-@entity @data @delete
+@app @entity @data @delete
 Feature: Delete datas
   In order to delete datas
   As an admin identity

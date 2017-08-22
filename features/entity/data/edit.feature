@@ -1,4 +1,4 @@
-@entity @data @edit
+@app @entity @data @edit
 Feature: Edit datas
   In order to edit datas
   As an admin identity

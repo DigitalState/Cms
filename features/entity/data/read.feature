@@ -1,4 +1,4 @@
-@entity @data @read
+@app @entity @data @read
 Feature: Read datas
   In order to read datas
   As an admin identity

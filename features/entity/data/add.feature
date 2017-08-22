@@ -1,4 +1,4 @@
-@entity @data @add
+@app @entity @data @add
 Feature: Add datas
   In order to add datas
   As an admin identity
