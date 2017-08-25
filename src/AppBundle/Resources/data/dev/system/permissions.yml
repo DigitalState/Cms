@@ -1,18 +1,18 @@
 items:
     -
-        access: 49c04fa4-d221-490d-aefc-26206378c9a9 # Any system
+        access: 49c04fa4-d221-490d-aefc-26206378c9a9 # System
         entity_uuid: ~ # Any business unit
         key: entity
         attributes: [BROWSE, READ, EDIT, ADD, DELETE]
 
     -
-        access: 49c04fa4-d221-490d-aefc-26206378c9a9 # Any system
+        access: 49c04fa4-d221-490d-aefc-26206378c9a9 # System
         entity_uuid: ~ # Any business unit
         key: property
         attributes: [BROWSE, READ, EDIT]
 
     -
-        access: 49c04fa4-d221-490d-aefc-26206378c9a9 # Any system
+        access: 49c04fa4-d221-490d-aefc-26206378c9a9 # System
         entity_uuid: ~ # Any business unit
         key: custom
         attributes: [BROWSE, READ, EDIT, ADD, DELETE, EXECUTE]

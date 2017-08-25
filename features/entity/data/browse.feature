@@ -1,11 +1,11 @@
 @app @entity @data @browse
 Feature: Browse datas
   In order to browse datas
-  As an admin identity
+  As a system identity
   I should be able to send api requests related to datas
 
   Background:
-    Given I am authenticated as an "admin" identity
+    Given I am authenticated as a "system" identity
 
   @createSchema @loadFixtures
   Scenario: Browse all datas
