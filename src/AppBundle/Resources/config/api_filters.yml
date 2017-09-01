@@ -2,7 +2,7 @@ services:
     app.filter.data.search:
         parent: api_platform.doctrine.orm.search_filter
         arguments:
-            - { id: exact, uuid: exact, owner: exact, ownerUuid: exact }
+            - { id: exact, uuid: exact, owner: exact, ownerUuid: exact, slug: exact }
         tags:
             - { name: api_platform.filter, id: app.data.search }
 
@@ -30,7 +30,7 @@ services:
     app.filter.file.search:
         parent: api_platform.doctrine.orm.search_filter
         arguments:
-            - { id: exact, uuid: exact, owner: exact, ownerUuid: exact }
+            - { id: exact, uuid: exact, owner: exact, ownerUuid: exact, slug: exact }
         tags:
             - { name: api_platform.filter, id: app.file.search }
 
@@ -58,7 +58,7 @@ services:
     app.filter.text.search:
         parent: api_platform.doctrine.orm.search_filter
         arguments:
-            - { id: exact, uuid: exact, owner: exact, ownerUuid: exact }
+            - { id: exact, uuid: exact, owner: exact, ownerUuid: exact, slug: exact }
         tags:
             - { name: api_platform.filter, id: app.text.search }
 
@@ -86,7 +86,7 @@ services:
     app.filter.page.search:
         parent: api_platform.doctrine.orm.search_filter
         arguments:
-            - { id: exact, uuid: exact, owner: exact, ownerUuid: exact }
+            - { id: exact, uuid: exact, owner: exact, ownerUuid: exact, slug: exact }
         tags:
             - { name: api_platform.filter, id: app.page.search }
 
