@@ -19,7 +19,7 @@ items:
 
     -
         access: 37b4da57-4444-47f5-92ee-bcf09e415f4e # Any staff
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
+        entity_uuid: b20a40d9-b95b-4462-b8f1-c7453b9b7067 # Portal
         key:
             - data
             - data_property
@@ -31,40 +31,6 @@ items:
             - page_property
             - content
         attributes: [BROWSE, READ]
-
-    -
-        access: 8eb4a622-1249-40ce-b5c8-268f0d9475a6 # Manager
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
-        key:
-            - data
-            - file
-            - text
-            - page
-        attributes: [EDIT, ADD, DELETE]
-
-    -
-        access: 8eb4a622-1249-40ce-b5c8-268f0d9475a6 # Manager
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
-        key:
-            - data_property
-            - file_property
-            - text_property
-            - page_property
-        attributes: [EDIT]
-
-    -
-        access: 08ffdab5-cc48-44e5-afbf-1a7c00bd9945 # Agent
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
-        key:
-            - data
-            - data_property
-            - file
-            - file_property
-            - text
-            - text_property
-            - page
-            - page_property
-        attributes: [EDIT]
 
 prototype:
     access: ~
