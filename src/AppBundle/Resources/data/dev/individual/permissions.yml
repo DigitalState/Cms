@@ -1,16 +1,29 @@
 items:
     -
         access: 7d492d29-b50a-477a-bc28-5058452c5e49 # Any individual
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
+        entity_uuid: b20a40d9-b95b-4462-b8f1-c7453b9b7067 # Portal
         key:
             - data
-            - data_property
+            - data_uuid
+            - data_slug
+            - data_title
+            - data_data
             - file
-            - file_property
+            - file_uuid
+            - file_slug
+            - file_title
+            - file_description
+            - file_presentation
             - text
-            - text_property
+            - text_uuid
+            - text_slug
+            - text_title
+            - text_value
             - page
-            - page_property
+            - page_uuid
+            - page_slug
+            - page_title
+            - page_description
             - content
         attributes: [BROWSE, READ]
 

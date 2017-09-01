@@ -9,7 +9,9 @@ ds_security:
         data_deleted_at:         { title: app.permissions.data.deleted_at,          property:  AppBundle\Entity\Data.deletedAt,         attributes: [BROWSE, READ, EDIT] }
         data_owner:              { title: app.permissions.data.owner,               property:  AppBundle\Entity\Data.owner,             attributes: [BROWSE, READ, EDIT] }
         data_owner_uuid:         { title: app.permissions.data.owner_uuid,          property:  AppBundle\Entity\Data.ownerUuid,         attributes: [BROWSE, READ, EDIT] }
+        data_slug:               { title: app.permissions.data.slug,                property:  AppBundle\Entity\Data.slug,              attributes: [BROWSE, READ, EDIT] }
         data_title:              { title: app.permissions.data.title,               property:  AppBundle\Entity\Data.title,             attributes: [BROWSE, READ, EDIT] }
+        data_data:               { title: app.permissions.data.data,                property:  AppBundle\Entity\Data.data,              attributes: [BROWSE, READ, EDIT] }
         data_version:            { title: app.permissions.data.version,             property:  AppBundle\Entity\Data.version,           attributes: [BROWSE, READ, EDIT] }
         file:                    { title: app.permissions.file,                     entity:    AppBundle\Entity\File,                   attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
         file_property:           { title: app.permissions.file.property,            property:  AppBundle\Entity\File.*,                 attributes: [BROWSE, READ, EDIT] }
@@ -20,6 +22,7 @@ ds_security:
         file_deleted_at:         { title: app.permissions.file.deleted_at,          property:  AppBundle\Entity\File.deletedAt,         attributes: [BROWSE, READ, EDIT] }
         file_owner:              { title: app.permissions.file.owner,               property:  AppBundle\Entity\File.owner,             attributes: [BROWSE, READ, EDIT] }
         file_owner_uuid:         { title: app.permissions.file.owner_uuid,          property:  AppBundle\Entity\File.ownerUuid,         attributes: [BROWSE, READ, EDIT] }
+        file_slug:               { title: app.permissions.file.slug,                property:  AppBundle\Entity\File.slug,              attributes: [BROWSE, READ, EDIT] }
         file_title:              { title: app.permissions.file.title,               property:  AppBundle\Entity\File.title,             attributes: [BROWSE, READ, EDIT] }
         file_description:        { title: app.permissions.file.description,         property:  AppBundle\Entity\File.description,       attributes: [BROWSE, READ, EDIT] }
         file_presentation:       { title: app.permissions.file.presentation,        property:  AppBundle\Entity\File.presentation,      attributes: [BROWSE, READ, EDIT] }
@@ -33,7 +36,9 @@ ds_security:
         text_deleted_at:         { title: app.permissions.text.deleted_at,          property:  AppBundle\Entity\Text.deletedAt,         attributes: [BROWSE, READ, EDIT] }
         text_owner:              { title: app.permissions.text.owner,               property:  AppBundle\Entity\Text.owner,             attributes: [BROWSE, READ, EDIT] }
         text_owner_uuid:         { title: app.permissions.text.owner_uuid,          property:  AppBundle\Entity\Text.ownerUuid,         attributes: [BROWSE, READ, EDIT] }
+        text_slug:               { title: app.permissions.text.slug,                property:  AppBundle\Entity\Text.slug,              attributes: [BROWSE, READ, EDIT] }
         text_title:              { title: app.permissions.text.title,               property:  AppBundle\Entity\Text.title,             attributes: [BROWSE, READ, EDIT] }
+        text_value:              { title: app.permissions.text.value,               property:  AppBundle\Entity\Text.value,             attributes: [BROWSE, READ, EDIT] }
         text_version:            { title: app.permissions.text.version,             property:  AppBundle\Entity\Text.version,           attributes: [BROWSE, READ, EDIT] }
         page:                    { title: app.permissions.page,                     entity:    AppBundle\Entity\Page,                   attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
         page_property:           { title: app.permissions.page.property,            property:  AppBundle\Entity\Page.*,                 attributes: [BROWSE, READ, EDIT] }
@@ -44,6 +49,8 @@ ds_security:
         page_deleted_at:         { title: app.permissions.page.deleted_at,          property:  AppBundle\Entity\Page.deletedAt,         attributes: [BROWSE, READ, EDIT] }
         page_owner:              { title: app.permissions.page.owner,               property:  AppBundle\Entity\Page.owner,             attributes: [BROWSE, READ, EDIT] }
         page_owner_uuid:         { title: app.permissions.page.owner_uuid,          property:  AppBundle\Entity\Page.ownerUuid,         attributes: [BROWSE, READ, EDIT] }
+        page_slug:               { title: app.permissions.page.slug,                property:  AppBundle\Entity\Page.slug,              attributes: [BROWSE, READ, EDIT] }
         page_title:              { title: app.permissions.page.title,               property:  AppBundle\Entity\Page.title,             attributes: [BROWSE, READ, EDIT] }
+        page_description:        { title: app.permissions.page.description,         property:  AppBundle\Entity\Page.description,       attributes: [BROWSE, READ, EDIT] }
         page_version:            { title: app.permissions.page.version,             property:  AppBundle\Entity\Page.version,           attributes: [BROWSE, READ, EDIT] }
         content:                 { title: app.permissions.content,                  custom:    Content,                                 attributes: [BROWSE, READ] }
