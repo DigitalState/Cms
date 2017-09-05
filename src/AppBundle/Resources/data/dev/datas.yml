@@ -18,6 +18,57 @@ items:
                 collector-roads: Routes collectrices et routes collectrices principales
                 local-roads: Rues locales
 
+    -
+        uuid: b6c98dde-a396-47b7-9293-16f42ee131ea
+        owner_uuid: b20a40d9-b95b-4462-b8f1-c7453b9b7067 # Portal
+        slug: translation
+        title:
+            en: Translation
+            fr: Traduction
+        data:
+            en:
+                test: Sample translation
+                general:
+                    menu:
+                        cases: Cases
+            fr:
+                test: Exemple de traduction
+                general:
+                    menu:
+                        cases: Affaires
+
+    -
+        uuid: 7581cbf4-01f8-4270-96c7-90545c6be685
+        owner_uuid: b20a40d9-b95b-4462-b8f1-c7453b9b7067 # Portal
+        slug: portal-translation
+        title:
+            en: Portal Translation
+            fr: Traduction du portail
+        data:
+            en:
+                test: Sample Portal translation
+                general:
+                    menu:
+                        cases: My Cases
+            fr:
+                test: Exemple de traduction du portail
+                general:
+                    menu:
+                        cases: Mes affaires
+
+    -
+        uuid: 6e47e01d-410b-4063-a574-6f43f85e20fd
+        owner_uuid: c11c546e-bd01-47cf-97da-e25388357b5a # Administration
+        slug: admin-translation
+        title:
+            en: Admin Translation
+            fr: Traduction du l'administration
+        data:
+            en:
+                test: Sample Admin translation
+            fr:
+                test: Exemple de traduction de l'administration
+
 prototype:
     uuid: ~
     owner: BusinessUnit
