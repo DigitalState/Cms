@@ -1,4 +1,4 @@
-##UI Translations
+## UI Translations
 
 Each SPA has it's own translation set that is fetched using a predefined slug in the corresponding `data` entity. A translation set is organized in a JSON hierarchy of objects for organizational purposes. For example, sidebar menu items get their titles from the following object in the translation set: 
 ```
@@ -31,11 +31,11 @@ For example, in the Admin SPA translations are merged as follows:
 in the Portal SPA translations are merged as follows:
 `portal-translation` <- `common-translations` <- JSON files 
 
-##Formio Translations
+## Formio Translations
 
 Each Formio form has it's own `data` entity to hold it's translations. The slug used is formatted as follows: `formio-{{FORM_ID}}`. A the moment, Formio translations can be created/updated using Postman.
 
-###Create form translation
+### Create form translation
 POST the request body below to `http://45.79.141.45:8056/app_dev.php/datas`
 ```
 {
@@ -66,7 +66,7 @@ POST the request body below to `http://45.79.141.45:8056/app_dev.php/datas`
 }
 ```
 
-###Update form translation
+### Update form translation
 PUT the request body below to `http://45.79.141.45:8056/app_dev.php/datas/{{DATA_ENTITY_UUID}}`
 ```
 {
