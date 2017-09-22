@@ -3,21 +3,23 @@
 Each SPA has it's own translation set that is fetched using a predefined slug in the corresponding `data` entity. A translation set is organized in a JSON hierarchy of objects for organizational purposes. For example, sidebar menu items get their titles from the following object in the translation set: 
 ```
 "general": {
-    "menu": {
-    	"dashboard": "Dashboard",
-    	"serviceDirectory": "Service Directory",
-    	...
-    }
+  "menu": {
+    "dashboard": "Dashboard",
+    "serviceDirectory": "Service Directory",
+    ...
+  }
 }
 ```
 So, in order to update the Dashboard menu title in French, we have to add the JSON object under the `fr` object as follows:
 ```
 "fr": {
-	"general": {
-	    "menu": {
-	    	"dashboard": "Tableau"
-	    }
-	}
+  "general": {
+    "menu": {
+      "dashboard": "Dashboard",
+      "serviceDirectory": "Service Directory",
+      ...
+    }
+  }
 }
 ```
 
@@ -39,30 +41,30 @@ Each Formio form has it's own `data` entity to hold it's translations. The slug 
 POST the request body below to `http://45.79.141.45:8056/app_dev.php/datas`
 ```
 {
-	"owner": "BusinessUnit",
-	"ownerUuid": "b20a40d9-b95b-4462-b8f1-c7453b9b7067",
-	"identity": "Individual",
-	"identityUuid": "9be0af28-ef41-49b7-86d9-72a2d9beb051",
-	"slug": "formio-review-taxes",
-	"title": { 
-		"en": "Formio Translation (Pay taxes)",
-		"fr": "Formio Traduction (Payer des taxes)" 
-	},
-	"data": {
-        "en": {
-            "First Name": "First Name",
-            "Last Name": "Last Name",
-            "Mobile Number": "Mobile Number",
-            "To change your mobile number, you must edit your account profile": "To change your mobile number, you must edit your account profile"
-        },
-        "fr": {
-            "First Name": "Prénom",
-            "Last Name": "Nom de famille",
-            "Mobile Number": "Numéro de portable",
-            "To change your mobile number, you must edit your account profile": "Pour changer votre numéro de mobile, vous devez modifier le profil de votre compte"
-        }
+  "owner": "BusinessUnit",
+  "ownerUuid": "b20a40d9-b95b-4462-b8f1-c7453b9b7067",
+  "identity": "Individual",
+  "identityUuid": "9be0af28-ef41-49b7-86d9-72a2d9beb051",
+  "slug": "formio-review-taxes",
+  "title": {
+    "en": "Formio Translation (Pay taxes)",
+    "fr": "Formio Traduction (Payer des taxes)"
+  },
+  "data": {
+    "en": {
+      "First Name": "First Name",
+      "Last Name": "Last Name",
+      "Mobile Number": "Mobile Number",
+      "To change your mobile number, you must edit your account profile": "To change your mobile number, you must edit your account profile"
     },
-	"version": 1
+    "fr": {
+      "First Name": "Prénom",
+      "Last Name": "Nom de famille",
+      "Mobile Number": "Numéro de portable",
+      "To change your mobile number, you must edit your account profile": "Pour changer votre numéro de mobile, vous devez modifier le profil de votre compte"
+    }
+  },
+  "version": 1
 }
 ```
 
@@ -70,14 +72,14 @@ POST the request body below to `http://45.79.141.45:8056/app_dev.php/datas`
 PUT the request body below to `http://45.79.141.45:8056/app_dev.php/datas/{{DATA_ENTITY_UUID}}`
 ```
 {
-	"data": {
-        "en": {
-            "First Name": "XYZ"
-        },
-        "fr": {
-            "First Name": "ABC"
-        }
+  "data": {
+    "en": {
+      "First Name": "XYZ"
     },
-	"version": 2
+    "fr": {
+      "First Name": "ABC"
+    }
+  },
+  "version": 2
 }
 ```
