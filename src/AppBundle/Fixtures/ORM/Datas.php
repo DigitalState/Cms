@@ -1,14 +1,14 @@
 <?php
 
-namespace AppBundle\DataFixtures\ORM;
+namespace AppBundle\Fixtures\ORM;
 
-use AppBundle\Fixture\ORM\TextFixture;
+use AppBundle\Fixture\ORM\DataFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
 /**
- * Class Texts
+ * Class Datas
  */
-class Texts extends TextFixture implements OrderedFixtureInterface
+class Datas extends DataFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritdoc}
@@ -23,6 +23,6 @@ class Texts extends TextFixture implements OrderedFixtureInterface
      */
     protected function getResource()
     {
-        return __DIR__.'/../../Resources/data/{env}/texts.yml';
+        return __DIR__.'/../../Resources/data/{env}/datas.yml';
     }
 }
