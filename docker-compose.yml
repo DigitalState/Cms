@@ -1,45 +1,48 @@
 version: '2.1'
 
 volumes:
-  db_data:
-    driver: 'local'
+    cms_db_data:
+        driver: local
 
 services:
-  db:
-    image: 'mysql:5.7'
-    ports:
-      - '9056:3306'
-    environment:
-      MYSQL_DATABASE: 'api_platform'
-      MYSQL_USER: 'api_platform'
-      MYSQL_PASSWORD: 'api_platform'
-      MYSQL_RANDOM_ROOT_PASSWORD: 'true'
-    volumes:
-      - 'db_data:/var/lib/mysql'
-    healthcheck:
-      test: ['CMD-SHELL', 'mysql --user=api_platform --password=api_platform -e "SHOW TABLES" api_platform']
-      interval: '5s'
-      timeout: '1s'
-      retries: 10
+    cms_db:
+        image: mysql:5.7
+        environment:
+            MYSQL_DATABASE: api_platform
+            MYSQL_USER: api_platform
+            MYSQL_PASSWORD: api_platform
+            MYSQL_RANDOM_ROOT_PASSWORD: 'true'
+        volumes:
+            - cms_db_data:/var/lib/mysql
+        healthcheck:
+            test: ['CMD-SHELL', 'mysql --user=api_platform --password=api_platform -e "SHOW TABLES" api_platform']
+            interval: 5s
+            timeout: 1s
+            retries: 10
 
-  php:
-    build: '.'
-    depends_on:
-      db:
-        condition: 'service_healthy'
-    environment:
-      SYMFONY_ENV: 'dev'
-    volumes:
-      - './:/srv/api-platform'
+    cms_php:
+        build: .
+        depends_on:
+            cms_db:
+                condition: service_healthy
+        environment:
+            SYMFONY_ENV: dev
+        volumes:
+            - ./:/srv/api-platform
 
-  nginx:
-    image: 'nginx:1.11-alpine'
-    depends_on:
-      php:
-        condition: 'service_started'
-    ports:
-      - '8056:80'
-    volumes_from:
-      - php
-    volumes:
-      - './docker/nginx/conf.d:/etc/nginx/conf.d:ro'
+    cms_nginx:
+        image: nginx:1.11-alpine
+        depends_on:
+            cms_php:
+                condition: service_started
+        environment:
+            VIRTUAL_HOST: api.cms.ds
+        volumes_from:
+            - cms_php
+        volumes:
+            - ./docker/nginx/conf.d:/etc/nginx/conf.d:ro
+
+networks:
+    default:
+        external:
+          name: api_default
