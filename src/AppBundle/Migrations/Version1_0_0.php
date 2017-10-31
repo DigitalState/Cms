@@ -41,6 +41,26 @@ class Version1_0_0 extends AbstractMigration
         // Data
         $this->addSql('
             INSERT INTO 
+                `ds_config` (`id`, `uuid`, `owner`, `owner_uuid`, `key`, `value`, `enabled`, `version`, `created_at`, `updated_at`)
+            VALUES 
+                (1, \'9c4c7d76-d77f-4759-b614-6cee70f15fc5\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.user.username\', \'system@ds\', 1, 1, now(), now()),
+                (2, \'80b8f6ad-dcf2-46fa-a0fe-53ad44fd184a\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.user.uuid\', \'b496655f-8fe6-4340-9a77-1bc3eeabab53\', 1, 1, now(), now()),
+                (3, \'14ec3d8c-4e98-4d69-bb1c-43f3c2003ca3\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.user.roles\', \'ROLE_SYSTEM\', 1, 1, now(), now()),
+                (4, \'c29895ff-19f5-4f27-aabc-538e2a7123da\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.user.identity\', \'System\', 1, 1, now(), now()),
+                (5, \'869e90d3-5346-4511-ae49-dc9329e7a0dd\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.user.identity_uuid\', \'df5fd904-aa47-452f-9c4a-d6b52fe5ace4\', 1, 1, now(), now()),
+                (6, \'0e5d605b-0633-4b75-aa94-9daa4d3b1d6b\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.authentication.host\', \'127.0.0.1\', 1, 1, now(), now()),
+                (7, \'ca7156c7-6cea-438f-9f2f-c005db0b3e75\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.identities.host\', \'127.0.0.1\', 1, 1, now(), now()),
+                (8, \'d1822c5a-7a5e-41e4-b1b1-7d9ebb5e673e\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.cases.host\', \'127.0.0.1\', 1, 1, now(), now()),
+                (9, \'f6dfedd1-bab6-4c61-bfbc-760fe5145db6\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.services.host\', \'127.0.0.1\', 1, 1, now(), now()),
+                (10, \'3b8769d0-faf1-43ae-a044-82c6ec5b478d\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.records.host\', \'127.0.0.1\', 1, 1, now(), now()),
+                (11, \'6ae9779b-d447-43b2-b2eb-cef50448bfec\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.assets.host\', \'127.0.0.1\', 1, 1, now(), now()),
+                (12, \'900738a0-b360-4a5c-9fc8-a05e15203728\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.cms.host\', \'127.0.0.1\', 1, 1, now(), now()),
+                (13, \'5734397d-d732-45d9-b632-bfc6dfd7e1f0\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.camunda.host\', \'127.0.0.1\', 1, 1, now(), now()),
+                (14, \'830e62fa-474a-4431-af6e-cfeb5c73c2a7\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.formio.host\', \'127.0.0.1\', 1, 1, now(), now());
+        ');
+
+        $this->addSql('
+            INSERT INTO 
                 `ds_access` (`id`, `uuid`, `owner`, `owner_uuid`, `identity`, `identity_uuid`, `version`, `created_at`, `updated_at`)
             VALUES 
                 (1, \'cc8e9246-dd1e-4f19-a901-88b969198cd8\', \'System\', \'df5fd904-aa47-452f-9c4a-d6b52fe5ace4\', \'System\', \'df5fd904-aa47-452f-9c4a-d6b52fe5ace4\', 1, now(), now()),
