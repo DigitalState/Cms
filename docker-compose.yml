@@ -1,7 +1,7 @@
 version: '2.1'
 
 volumes:
-    cms_db_data:
+    db_data:
         driver: local
 
 services:
