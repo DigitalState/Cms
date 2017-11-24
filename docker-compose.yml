@@ -5,7 +5,7 @@ volumes:
         driver: local
 
 services:
-    cms_db:
+    db:
         image: mysql:5.7
         environment:
             MYSQL_DATABASE: api_platform
@@ -13,22 +13,24 @@ services:
             MYSQL_PASSWORD: api_platform
             MYSQL_RANDOM_ROOT_PASSWORD: 'true'
         volumes:
-            - cms_db_data:/var/lib/mysql
+            - db_data:/var/lib/mysql
         healthcheck:
             test: ['CMD-SHELL', 'mysql --user=api_platform --password=api_platform -e "SHOW TABLES" api_platform']
             interval: 5s
             timeout: 1s
             retries: 10
 
-    cms_php:
+    php:
         build: .
         depends_on:
-            cms_db:
+            db:
                 condition: service_healthy
         environment:
             SYMFONY_ENV: dev
         volumes:
             - '${DIRECTORY}:/srv/api-platform'
+        links:
+              - db:cms_db
         extra_hosts:
             - 'api.assets.ds:${PROXY_HOST}'
             - 'api.authentication.ds:${PROXY_HOST}'
@@ -45,17 +47,20 @@ services:
             - 'api.tasks.ds:${PROXY_HOST}'
             - 'api.topics.ds:${PROXY_HOST}'
 
-    cms_nginx:
+    nginx:
         image: nginx:1.11-alpine
         depends_on:
-            cms_php:
+            php:
                 condition: service_started
         environment:
             - VIRTUAL_HOST
         volumes_from:
-            - cms_php
+            - php
         volumes:
             - '${DIRECTORY}/docker/nginx/conf.d:/etc/nginx/conf.d:ro'
+        links:
+              - php:cms_php
+              - db:cms_db
 
 networks:
     default:
