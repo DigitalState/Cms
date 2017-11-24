@@ -1,18 +1,36 @@
 items:
     -
-        access: 49c04fa4-d221-490d-aefc-26206378c9a9 # System
+        access: ec1f57b5-9235-4a12-96b0-a37821fd7c9f # System
         entity_uuid: ~ # Any business unit
         key: entity
         attributes: [BROWSE, READ, EDIT, ADD, DELETE]
 
     -
-        access: 49c04fa4-d221-490d-aefc-26206378c9a9 # System
+        access: ec1f57b5-9235-4a12-96b0-a37821fd7c9f # System
         entity_uuid: ~ # Any business unit
         key: property
         attributes: [BROWSE, READ, EDIT]
 
     -
-        access: 49c04fa4-d221-490d-aefc-26206378c9a9 # System
+        access: ec1f57b5-9235-4a12-96b0-a37821fd7c9f # System
+        entity_uuid: ~ # Any business unit
+        key: custom
+        attributes: [BROWSE, READ, EDIT, ADD, DELETE, EXECUTE]
+
+    -
+        access: 4603af5d-0b78-4ea1-8e7e-3625277a1116 # Bpm
+        entity_uuid: ~ # Any business unit
+        key: entity
+        attributes: [BROWSE, READ, EDIT, ADD, DELETE]
+
+    -
+        access: 4603af5d-0b78-4ea1-8e7e-3625277a1116 # Bpm
+        entity_uuid: ~ # Any business unit
+        key: property
+        attributes: [BROWSE, READ, EDIT]
+
+    -
+        access: 4603af5d-0b78-4ea1-8e7e-3625277a1116 # Bpm
         entity_uuid: ~ # Any business unit
         key: custom
         attributes: [BROWSE, READ, EDIT, ADD, DELETE, EXECUTE]
