@@ -6,6 +6,7 @@ use Ds\Component\Locale\Model\Type\Localizable;
 use Ds\Component\Model\Attribute\Accessor;
 use Ds\Component\Model\Type\Identifiable;
 use Ds\Component\Model\Type\Ownable;
+use Ds\Component\Model\Type\Sluggable;
 use Ds\Component\Model\Type\Uuidentifiable;
 use Ds\Component\Model\Type\Versionable;
 use Ds\Component\Translation\Model\Attribute\Accessor as TranslationAccessor;
@@ -45,7 +46,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORMAssert\UniqueEntity(fields="uuid")
  * @ORMAssert\UniqueEntity(fields="slug")
  */
-class Page implements Identifiable, Uuidentifiable, Ownable, Translatable, Localizable, Versionable
+class Page implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translatable, Localizable, Versionable
 {
     use Behavior\Translatable\Translatable;
     use Behavior\Timestampable\Timestampable;
@@ -53,6 +54,7 @@ class Page implements Identifiable, Uuidentifiable, Ownable, Translatable, Local
 
     use Accessor\Id;
     use Accessor\Uuid;
+    use Accessor\Slug;
     use Accessor\Owner;
     use Accessor\OwnerUuid;
     use TranslationAccessor\Title;
