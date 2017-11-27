@@ -27,7 +27,8 @@ abstract class FileFixture extends ResourceFixture
                 ->setSlug($file['slug'])
                 ->setTitle($file['title'])
                 ->setDescription($file['description'])
-                ->setPresentation($file['presentation']);
+                ->setPresentation($file['presentation'])
+                ->setType($file['type']);
             $manager->persist($entity);
             $manager->flush();
         }

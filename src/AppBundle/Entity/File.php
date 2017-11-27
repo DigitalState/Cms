@@ -60,6 +60,7 @@ class File implements Identifiable, Uuidentifiable, Ownable, Translatable, Local
     use TranslationAccessor\Title;
     use TranslationAccessor\Description;
     use TranslationAccessor\Presentation;
+    use Accessor\Type;
     use Accessor\Deleted;
     use Accessor\Version;
 
@@ -177,6 +178,16 @@ class File implements Identifiable, Uuidentifiable, Ownable, Translatable, Local
      * @Translate
      */
     protected $presentation;
+
+    /**
+     * @var string
+     * @ApiProperty
+     * @Serializer\Groups({"file_output", "file_input"})
+     * @ORM\Column(name="`type`", type="string", length=255, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Length(min=1, max=255)
+     */
+    protected $type;
 
     /**
      * @var integer
