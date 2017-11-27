@@ -23,6 +23,6 @@ class Texts extends TextFixture implements OrderedFixtureInterface
      */
     protected function getResource()
     {
-        return __DIR__.'/../../Resources/data/{env}/texts.yml';
+        return '/srv/api-platform/src/AppBundle/Resources/data/{env}/texts.yml';
     }
 }
