@@ -26,14 +26,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Class File
  *
  * @ApiResource(
- *      itemOperations={
- *          "get"={
- *              "method"="GET"
- *          },
- *          "get_presentation"={
- *              "route_name"="file_presentation"
- *          }
- *      },
  *      attributes={
  *          "normalization_context"={
  *              "groups"={"file_output"}

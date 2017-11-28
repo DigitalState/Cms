@@ -3,10 +3,12 @@
 namespace AppBundle\Action\File;
 
 use AppBundle\Entity\File;
+use AppBundle\Service\FileService;
 use Ds\Component\Security\Model\Permission;
 use Ds\Component\Security\Model\Subject;
 use Ds\Component\Security\Voter\Permission\PropertyVoter;
 use LogicException;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -25,6 +27,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class PresentationAction
 {
     /**
+     * @var \Symfony\Component\HttpFoundation\RequestStack
+     */
+    protected $requestStack;
+
+    /**
+     * @var \AppBundle\Service\FileService
+     */
+    protected $fileService;
+
+    /**
      * @var \Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface
      */
     protected $tokenStorage;
@@ -37,11 +49,14 @@ class PresentationAction
     /**
      * Constructor
      *
+     * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
      * @param \Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface $tokenStorage
      * @param \Ds\Component\Security\Voter\Permission\PropertyVoter $propertyVoter
      */
-    public function __construct(TokenStorageInterface $tokenStorage, PropertyVoter $propertyVoter)
+    public function __construct(RequestStack $requestStack, FileService $fileService, TokenStorageInterface $tokenStorage, PropertyVoter $propertyVoter)
     {
+        $this->requestStack = $requestStack;
+        $this->fileService = $fileService;
         $this->tokenStorage = $tokenStorage;
         $this->propertyVoter = $propertyVoter;
     }
@@ -50,25 +65,24 @@ class PresentationAction
      * Presentation
      *
      * @Method("GET")
-     * @Route(
-     *     name="file_presentation",
-     *     path="/files/{id}/presentation/{locale}",
-     *     defaults={
-     *         "_api_resource_class"=File::class,
-     *         "_api_item_operation_name"="get_presentation",
-     *         "locale"=null
-     *     }
-     * )
+     * @Route(path="/files/{slug}/presentation")
      */
-    public function get($data, $locale)
+    public function get($slug)
     {
+        $request = $this->requestStack->getCurrentRequest();
+        $file = $this->fileService->getRepository()->findOneBy(['slug' => $slug]);
+
+        if (!$file) {
+            throw new NotFoundHttpException('File not found.');
+        }
+
         $token = $this->tokenStorage->getToken();
         $subject = new Subject;
         $subject
             ->setType(Permission::PROPERTY)
             ->setValue(File::class.'.presentation')
-            ->setEntity($data->getOwner())
-            ->setEntityUuid($data->getOwnerUuid());
+            ->setEntity($file->getOwner())
+            ->setEntityUuid($file->getOwnerUuid());
 
         $vote = $this->propertyVoter->vote($token, $subject, [Permission::READ]);
 
@@ -80,14 +94,15 @@ class PresentationAction
             throw new AccessDeniedException('Access denied.');
         }
 
-        $presentation = $data->getPresentation();
+        $presentation = $file->getPresentation();
+        $locale = $request->query->get('locale', null);
 
         if (!array_key_exists($locale, $presentation)) {
             throw new NotFoundHttpException('File locale not found.');
         }
 
         $presentation = base64_decode($presentation[$locale]);
-        $type = $data->getType();
+        $type = $file->getType();
         $response = new Response($presentation, Response::HTTP_OK, ['Content-Type' => $type]);
 
         return $response;
