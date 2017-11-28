@@ -8,6 +8,7 @@ use Ds\Component\Security\Model\Subject;
 use Ds\Component\Security\Voter\Permission\PropertyVoter;
 use LogicException;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
@@ -54,11 +55,12 @@ class PresentationAction
      *     path="/files/{id}/presentation/{locale}",
      *     defaults={
      *         "_api_resource_class"=File::class,
-     *         "_api_item_operation_name"="get_presentation"
+     *         "_api_item_operation_name"="get_presentation",
+     *         "locale"=null
      *     }
      * )
      */
-    public function get($data)
+    public function get($data, $locale)
     {
         $token = $this->tokenStorage->getToken();
         $subject = new Subject;
@@ -78,7 +80,13 @@ class PresentationAction
             throw new AccessDeniedException('Access denied.');
         }
 
-        $presentation = base64_decode($data->getPresentation()['en']);
+        $presentation = $data->getPresentation();
+
+        if (!array_key_exists($locale, $presentation)) {
+            throw new NotFoundHttpException('File locale not found.');
+        }
+
+        $presentation = base64_decode($presentation[$locale]);
         $type = $data->getType();
         $response = new Response($presentation, Response::HTTP_OK, ['Content-Type' => $type]);
 
