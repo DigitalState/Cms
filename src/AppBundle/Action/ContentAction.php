@@ -75,28 +75,35 @@ class ContentAction
             $slugs = $request->query->get($type.'s', []);
 
             if ($slugs) {
-                $content->{$type.'s'} = new stdClass;
-                $entities = $this->{$type.'Service'}->getRepository()->findBy(['slug' => $slugs]);
+                $collection = $type.'s';
+                $service = $type.'Service';
+                $content->$collection = new stdClass;
+                $entities = $this->$service->getRepository()->findBy(['slug' => $slugs]);
 
-                if (count($entities) !== count($slugs)) {
-                    throw new NotFoundHttpException('Entities not found.');
-                }
+                foreach ($slugs as $slug) {
+                    $content->$collection->$slug = null;
 
-                foreach ($entities as $entity) {
-                    $content->{$type.'s'}->{$entity->getSlug()} = new stdClass;
-
-                    switch ($type) {
-                        case 'data':
-                            $content->{$type.'s'}->{$entity->getSlug()} = $entity->getData();
+                    foreach ($entities as $entity) {
+                        if ($entity->getSlug() !== $slug) {
                             break;
+                        }
 
-                        case 'file':
-                            $content->{$type.'s'}->{$entity->getSlug()} = $entity->getPresentation();
-                            break;
+                        $content->$collection->$slug = new stdClass;
 
-                        case 'text':
-                            $content->{$type.'s'}->{$entity->getSlug()} = $entity->getValue();
-                            break;
+                        switch ($type) {
+                            case 'data':
+                                $content->$collection->$slug = $entity->getData();
+                                break;
+
+                            case 'file':
+                                $content->$collection->$slug->type = $entity->getType();
+                                $content->$collection->$slug->presentation = $entity->getPresentation();
+                                break;
+
+                            case 'text':
+                                $content->$collection->$slug = $entity->getValue();
+                                break;
+                        }
                     }
                 }
             }
