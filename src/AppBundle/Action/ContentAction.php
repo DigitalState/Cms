@@ -85,7 +85,7 @@ class ContentAction
 
                     foreach ($entities as $entity) {
                         if ($entity->getSlug() !== $slug) {
-                            break;
+                            continue;
                         }
 
                         $content->$collection->$slug = new stdClass;
