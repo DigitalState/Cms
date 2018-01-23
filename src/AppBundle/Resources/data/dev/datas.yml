@@ -30,12 +30,12 @@ items:
                 test: Sample translation
                 general:
                     menu:
-                        cases: Cases
+                        sampleItem: Sample Item
             fr:
                 test: Exemple de traduction
                 general:
                     menu:
-                        cases: Affaires
+                        sampleItem: Exemple d'article
 
     -
         uuid: 7581cbf4-01f8-4270-96c7-90545c6be685
