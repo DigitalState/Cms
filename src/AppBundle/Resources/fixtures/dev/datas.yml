@@ -30,12 +30,12 @@ items:
                 test: Sample translation
                 general:
                     menu:
-                        cases: Cases
+                        sampleItem: Sample Item
             fr:
                 test: Exemple de traduction
                 general:
                     menu:
-                        cases: Affaires
+                        sampleItem: Exemple d'article
 
     -
         uuid: 7581cbf4-01f8-4270-96c7-90545c6be685
@@ -49,12 +49,12 @@ items:
                 test: Sample Portal translation
                 general:
                     menu:
-                        cases: My Cases
+                        myItem: My Item
             fr:
                 test: Exemple de traduction du portail
                 general:
                     menu:
-                        cases: Mes affaires
+                        myItem: Mon article
 
     -
         uuid: 6e47e01d-410b-4063-a574-6f43f85e20fd
