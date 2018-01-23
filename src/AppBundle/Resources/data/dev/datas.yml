@@ -49,12 +49,12 @@ items:
                 test: Sample Portal translation
                 general:
                     menu:
-                        cases: My Cases
+                        myItem: My Item
             fr:
                 test: Exemple de traduction du portail
                 general:
                     menu:
-                        cases: Mes affaires
+                        myItem: Mon article
 
     -
         uuid: 6e47e01d-410b-4063-a574-6f43f85e20fd
