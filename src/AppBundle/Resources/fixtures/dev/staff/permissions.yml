@@ -1,0 +1,55 @@
+items:
+    -
+        access: 37b4da57-4444-47f5-92ee-bcf09e415f4e # Any Staff
+        entity_uuid: a9d68bf7-5000-49fe-8b00-33dde235b327 # Backoffice
+        key:
+            - data
+            - data_property
+            - file
+            - file_property
+            - text
+            - text_property
+            - page
+            - page_property
+            - content
+        attributes: [BROWSE, READ]
+
+    -
+        access: 37b4da57-4444-47f5-92ee-bcf09e415f4e # Any Staff
+        entity_uuid: b20a40d9-b95b-4462-b8f1-c7453b9b7067 # Portal
+        key:
+            - data
+            - data_property
+            - file
+            - file_property
+            - text
+            - text_property
+            - page
+            - page_property
+            - content
+        attributes: [BROWSE, READ]
+
+    -
+        access: 4ae0ec06-701f-4c8e-89d0-6d0d53ef784b # Admin
+        entity_uuid: ~ # Any BusinessUnit
+        key: entity
+        attributes: [BROWSE, READ, EDIT, ADD, DELETE]
+
+    -
+        access: 4ae0ec06-701f-4c8e-89d0-6d0d53ef784b # Admin
+        entity_uuid: ~ # Any BusinessUnit
+        key: property
+        attributes: [BROWSE, READ, EDIT]
+
+    -
+        access: 4ae0ec06-701f-4c8e-89d0-6d0d53ef784b # Admin
+        entity_uuid: ~ # Any BusinessUnit
+        key: custom
+        attributes: [BROWSE, READ, EDIT, ADD, DELETE, EXECUTE]
+
+prototype:
+    access: ~
+    entity: BusinessUnit
+    entity_uuid: ~
+    key: ~
+    attributes: []

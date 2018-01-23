@@ -7,12 +7,11 @@ items:
 
     -
         uuid: 4603af5d-0b78-4ea1-8e7e-3625277a1116
-        owner_uuid: c11c546e-bd01-47cf-97da-e25388357b5a # Administration
         identity_uuid: 60591cbd-efad-4289-9b7c-a258016e94cb # Bpm
 
 prototype:
     uuid: ~
     owner: BusinessUnit
-    owner_uuid: ~
+    owner_uuid: c11c546e-bd01-47cf-97da-e25388357b5a # Administration
     identity: System
     identity_uuid: ~

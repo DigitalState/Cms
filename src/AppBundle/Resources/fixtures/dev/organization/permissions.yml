@@ -1,6 +1,6 @@
 items:
     -
-        access: da13ae4b-f5e5-4c34-b075-d9f2f4168608 # Any organization
+        access: da13ae4b-f5e5-4c34-b075-d9f2f4168608 # Any Organization
         entity_uuid: b20a40d9-b95b-4462-b8f1-c7453b9b7067 # Portal
         key:
             - data

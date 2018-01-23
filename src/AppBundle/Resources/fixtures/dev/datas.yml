@@ -62,7 +62,7 @@ items:
         slug: admin-translation
         title:
             en: Admin Translation
-            fr: Traduction du l'administration
+            fr: Traduction de l'administration
         data:
             en:
                 test: Sample Admin translation

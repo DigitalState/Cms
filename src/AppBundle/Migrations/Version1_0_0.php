@@ -4,6 +4,8 @@ namespace AppBundle\Migrations;
 
 use Doctrine\DBAL\Migrations\AbstractMigration;
 use Doctrine\DBAL\Schema\Schema;
+use Ramsey\Uuid\Uuid;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * Class Version1_0_0
@@ -39,32 +41,40 @@ class Version1_0_0 extends AbstractMigration
         $this->addSql('ALTER TABLE app_text_trans ADD CONSTRAINT FK_708E0F9C2C2AC5D3 FOREIGN KEY (translatable_id) REFERENCES app_text (id) ON DELETE CASCADE');
 
         // Data
+        $yml = file_get_contents('/srv/api-platform/src/AppBundle/Resources/migrations/1_0_0.yml');
+        $data = Yaml::parse($yml);
+
         $this->addSql('
             INSERT INTO 
                 `ds_config` (`id`, `uuid`, `owner`, `owner_uuid`, `key`, `value`, `enabled`, `version`, `created_at`, `updated_at`)
             VALUES 
-                (1, \'9c4c7d76-d77f-4759-b614-6cee70f15fc5\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.user.username\', \'system@ds\', 1, 1, now(), now()),
-                (2, \'80b8f6ad-dcf2-46fa-a0fe-53ad44fd184a\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.user.uuid\', \'b496655f-8fe6-4340-9a77-1bc3eeabab53\', 1, 1, now(), now()),
-                (3, \'14ec3d8c-4e98-4d69-bb1c-43f3c2003ca3\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.user.roles\', \'ROLE_SYSTEM\', 1, 1, now(), now()),
-                (4, \'c29895ff-19f5-4f27-aabc-538e2a7123da\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.user.identity\', \'System\', 1, 1, now(), now()),
-                (5, \'869e90d3-5346-4511-ae49-dc9329e7a0dd\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.user.identity_uuid\', \'df5fd904-aa47-452f-9c4a-d6b52fe5ace4\', 1, 1, now(), now()),
-                (6, \'0e5d605b-0633-4b75-aa94-9daa4d3b1d6b\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.authentication.host\', \'http://api.authentication.ds\', 1, 1, now(), now()),
-                (7, \'ca7156c7-6cea-438f-9f2f-c005db0b3e75\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.identities.host\', \'http://api.identities.ds\', 1, 1, now(), now()),
-                (8, \'d1822c5a-7a5e-41e4-b1b1-7d9ebb5e673e\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.cases.host\', \'http://api.cases.ds\', 1, 1, now(), now()),
-                (9, \'f6dfedd1-bab6-4c61-bfbc-760fe5145db6\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.services.host\', \'http://api.services.ds\', 1, 1, now(), now()),
-                (10, \'3b8769d0-faf1-43ae-a044-82c6ec5b478d\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.records.host\', \'http://api.records.ds\', 1, 1, now(), now()),
-                (11, \'6ae9779b-d447-43b2-b2eb-cef50448bfec\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.assets.host\', \'http://api.assets.ds\', 1, 1, now(), now()),
-                (12, \'900738a0-b360-4a5c-9fc8-a05e15203728\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.cms.host\', \'http://api.cms.ds\', 1, 1, now(), now()),
-                (13, \'5734397d-d732-45d9-b632-bfc6dfd7e1f0\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.camunda.host\', \'http://api.camunda.ds/engine-rest\', 1, 1, now(), now()),
-                (14, \'830e62fa-474a-4431-af6e-cfeb5c73c2a7\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.formio.host\', \'http://api.formio.ds\', 1, 1, now(), now());
+                (1, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.username\', \'system@ds\', 1, 1, now(), now()),
+                (2, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.uuid\', \''.$data['user']['system']['uuid'].'\', 1, 1, now(), now()),
+                (3, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.roles\', \'ROLE_SYSTEM\', 1, 1, now(), now()),
+                (4, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.identity\', \'System\', 1, 1, now(), now()),
+                (5, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.identity_uuid\', \''.$data['identity']['system']['uuid'].'\', 1, 1, now(), now()),
+                (6, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.api.assets.host\', \''.$data['config']['ds_api.api.assets.host']['value'].'\', 1, 1, now(), now()),
+                (7, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.api.authentication.host\', \''.$data['config']['ds_api.api.authentication.host']['value'].'\', 1, 1, now(), now()),
+                (8, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.api.camunda.host\', \''.$data['config']['ds_api.api.camunda.host']['value'].'\', 1, 1, now(), now()),
+                (9, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.api.cases.host\', \''.$data['config']['ds_api.api.cases.host']['value'].'\', 1, 1, now(), now()),
+                (10, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.api.cms.host\', \''.$data['config']['ds_api.api.cms.host']['value'].'\', 1, 1, now(), now()),
+                (11, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.api.formio.host\', \''.$data['config']['ds_api.api.formio.host']['value'].'\', 1, 1, now(), now()),
+                (12, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.api.identities.host\', \''.$data['config']['ds_api.api.identities.host']['value'].'\', 1, 1, now(), now()),
+                (13, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.api.records.host\', \''.$data['config']['ds_api.api.records.host']['value'].'\', 1, 1, now(), now()),
+                (14, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.api.services.host\', \''.$data['config']['ds_api.api.services.host']['value'].'\', 1, 1, now(), now()),
+                (15, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.api.tasks.host\', \''.$data['config']['ds_api.api.tasks.host']['value'].'\', 1, 1, now(), now());
         ');
 
         $this->addSql('
             INSERT INTO 
                 `ds_access` (`id`, `uuid`, `owner`, `owner_uuid`, `identity`, `identity_uuid`, `version`, `created_at`, `updated_at`)
             VALUES 
-                (1, \'cc8e9246-dd1e-4f19-a901-88b969198cd8\', \'System\', \'df5fd904-aa47-452f-9c4a-d6b52fe5ace4\', \'System\', \'df5fd904-aa47-452f-9c4a-d6b52fe5ace4\', 1, now(), now()),
-                (2, \'cf4e1030-3ebb-4322-8994-2b42166f4ead\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'System\', \'7b59586d-6924-47f3-bc1b-0dc207f5e80c\', 1, now(), now());
+                (1, \''.Uuid::uuid4()->toString().'\', \'System\', \''.$data['identity']['system']['uuid'].'\', \'System\', \''.$data['identity']['system']['uuid'].'\', 1, now(), now()),
+                (2, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'Anonymous\', NULL, 1, now(), now()),
+                (3, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'Individual\', NULL, 1, now(), now()),
+                (4, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'Organization\', NULL, 1, now(), now()),
+                (5, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'Staff\', NULL, 1, now(), now()),
+                (6, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'Staff\', \''.$data['identity']['admin']['uuid'].'\', 1, now(), now());
         ');
 
         $this->addSql('
@@ -74,9 +84,96 @@ class Version1_0_0 extends AbstractMigration
                 (1, 1, \'BusinessUnit\', NULL, \'entity\', \'["BROWSE","READ","EDIT","ADD","DELETE"]\'),
                 (2, 1, \'BusinessUnit\', NULL, \'property\', \'["BROWSE","READ","EDIT"]\'),
                 (3, 1, \'BusinessUnit\', NULL, \'custom\', \'["BROWSE","READ","EDIT","ADD","DELETE","EXECUTE"]\'),
-                (4, 2, \'BusinessUnit\', NULL, \'entity\', \'["BROWSE","READ","EDIT","ADD","DELETE"]\'),
-                (5, 2, \'BusinessUnit\', NULL, \'property\', \'["BROWSE","READ","EDIT"]\'),
-                (6, 2, \'BusinessUnit\', NULL, \'custom\', \'["BROWSE","READ","EDIT","ADD","DELETE","EXECUTE"]\');
+                (4, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'data\', \'["BROWSE","READ"]\'),
+                (5, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'data_uuid\', \'["BROWSE","READ"]\'),
+                (6, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'data_slug\', \'["BROWSE","READ"]\'),
+                (7, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'data_title\', \'["BROWSE","READ"]\'),
+                (8, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'data_data\', \'["BROWSE","READ"]\'),
+                (9, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file\', \'["BROWSE","READ"]\'),
+                (10, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file_uuid\', \'["BROWSE","READ"]\'),
+                (11, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file_slug\', \'["BROWSE","READ"]\'),
+                (12, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file_title\', \'["BROWSE","READ"]\'),
+                (13, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file_description\', \'["BROWSE","READ"]\'),
+                (14, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file_presentation\', \'["BROWSE","READ"]\'),
+                (15, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file_type\', \'["BROWSE","READ"]\'),
+                (16, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'text\', \'["BROWSE","READ"]\'),
+                (17, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'text_uuid\', \'["BROWSE","READ"]\'),
+                (18, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'text_slug\', \'["BROWSE","READ"]\'),
+                (19, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'text_title\', \'["BROWSE","READ"]\'),
+                (20, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'text_value\', \'["BROWSE","READ"]\'),
+                (21, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'page\', \'["BROWSE","READ"]\'),
+                (22, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'page_uuid\', \'["BROWSE","READ"]\'),
+                (23, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'page_slug\', \'["BROWSE","READ"]\'),
+                (24, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'page_title\', \'["BROWSE","READ"]\'),
+                (25, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'page_description\', \'["BROWSE","READ"]\'),
+                (26, 2, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'content\', \'["BROWSE","READ"]\'),
+                (27, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'data\', \'["BROWSE","READ"]\'),
+                (28, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'data_uuid\', \'["BROWSE","READ"]\'),
+                (29, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'data_slug\', \'["BROWSE","READ"]\'),
+                (30, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'data_title\', \'["BROWSE","READ"]\'),
+                (31, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'data_data\', \'["BROWSE","READ"]\'),
+                (32, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file\', \'["BROWSE","READ"]\'),
+                (33, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file_uuid\', \'["BROWSE","READ"]\'),
+                (34, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file_slug\', \'["BROWSE","READ"]\'),
+                (35, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file_title\', \'["BROWSE","READ"]\'),
+                (36, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file_description\', \'["BROWSE","READ"]\'),
+                (37, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file_presentation\', \'["BROWSE","READ"]\'),
+                (38, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file_type\', \'["BROWSE","READ"]\'),
+                (39, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'text\', \'["BROWSE","READ"]\'),
+                (40, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'text_uuid\', \'["BROWSE","READ"]\'),
+                (41, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'text_slug\', \'["BROWSE","READ"]\'),
+                (42, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'text_title\', \'["BROWSE","READ"]\'),
+                (43, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'text_value\', \'["BROWSE","READ"]\'),
+                (44, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'page\', \'["BROWSE","READ"]\'),
+                (45, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'page_uuid\', \'["BROWSE","READ"]\'),
+                (46, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'page_slug\', \'["BROWSE","READ"]\'),
+                (47, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'page_title\', \'["BROWSE","READ"]\'),
+                (48, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'page_description\', \'["BROWSE","READ"]\'),
+                (49, 3, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'content\', \'["BROWSE","READ"]\'),
+                (50, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'data\', \'["BROWSE","READ"]\'),
+                (51, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'data_uuid\', \'["BROWSE","READ"]\'),
+                (52, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'data_slug\', \'["BROWSE","READ"]\'),
+                (53, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'data_title\', \'["BROWSE","READ"]\'),
+                (54, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'data_data\', \'["BROWSE","READ"]\'),
+                (55, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file\', \'["BROWSE","READ"]\'),
+                (56, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file_uuid\', \'["BROWSE","READ"]\'),
+                (57, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file_slug\', \'["BROWSE","READ"]\'),
+                (58, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file_title\', \'["BROWSE","READ"]\'),
+                (59, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file_description\', \'["BROWSE","READ"]\'),
+                (60, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file_presentation\', \'["BROWSE","READ"]\'),
+                (61, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file_type\', \'["BROWSE","READ"]\'),
+                (62, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'text\', \'["BROWSE","READ"]\'),
+                (63, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'text_uuid\', \'["BROWSE","READ"]\'),
+                (64, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'text_slug\', \'["BROWSE","READ"]\'),
+                (65, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'text_title\', \'["BROWSE","READ"]\'),
+                (66, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'text_value\', \'["BROWSE","READ"]\'),
+                (67, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'page\', \'["BROWSE","READ"]\'),
+                (68, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'page_uuid\', \'["BROWSE","READ"]\'),
+                (69, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'page_slug\', \'["BROWSE","READ"]\'),
+                (70, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'page_title\', \'["BROWSE","READ"]\'),
+                (71, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'page_description\', \'["BROWSE","READ"]\'),
+                (72, 4, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'content\', \'["BROWSE","READ"]\'),
+                (73, 5, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'data\', \'["BROWSE","READ"]\'),
+                (74, 5, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'data_property\', \'["BROWSE","READ"]\'),
+                (75, 5, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file\', \'["BROWSE","READ"]\'),
+                (76, 5, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'file_property\', \'["BROWSE","READ"]\'),
+                (77, 5, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'text\', \'["BROWSE","READ"]\'),
+                (78, 5, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'text_property\', \'["BROWSE","READ"]\'),
+                (79, 5, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'page\', \'["BROWSE","READ"]\'),
+                (80, 5, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'page_property\', \'["BROWSE","READ"]\'),
+                (81, 5, \'BusinessUnit\', \''.$data['business_unit']['portal']['uuid'].'\', \'content\', \'["BROWSE","READ"]\'),
+                (82, 5, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'data\', \'["BROWSE","READ"]\'),
+                (83, 5, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'data_property\', \'["BROWSE","READ"]\'),
+                (84, 5, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'file\', \'["BROWSE","READ"]\'),
+                (85, 5, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'file_property\', \'["BROWSE","READ"]\'),
+                (86, 5, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'text\', \'["BROWSE","READ"]\'),
+                (87, 5, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'text_property\', \'["BROWSE","READ"]\'),
+                (88, 5, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'page\', \'["BROWSE","READ"]\'),
+                (89, 5, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'page_property\', \'["BROWSE","READ"]\'),
+                (90, 5, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'content\', \'["BROWSE","READ"]\'),
+                (91, 6, \'BusinessUnit\', NULL, \'entity\', \'["BROWSE","READ","EDIT","ADD","DELETE"]\'),
+                (92, 6, \'BusinessUnit\', NULL, \'property\', \'["BROWSE","READ","EDIT"]\'),
+                (93, 6, \'BusinessUnit\', NULL, \'custom\', \'["BROWSE","READ","EDIT","ADD","DELETE","EXECUTE"]\');
         ');
     }
 

@@ -23,6 +23,6 @@ class Files extends FileFixture implements OrderedFixtureInterface
      */
     protected function getResource()
     {
-        return '/srv/api-platform/src/AppBundle/Resources/data/{env}/files.yml';
+        return '/srv/api-platform/src/AppBundle/Resources/fixtures/{env}/files.yml';
     }
 }
