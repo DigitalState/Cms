@@ -5,9 +5,9 @@ Feature: Add datas
   I should be able to send api requests related to datas
 
   Background:
-    Given I am authenticated as a "system" identity
+    Given I am authenticated as the "system" identity
 
-  @createSchema @loadFixtures @dropSchema
+  @createSchema @loadFixtures
   Scenario: Add a data
     When I add "Accept" header equal to "application/json"
     And I add "Content-Type" header equal to "application/json"
@@ -15,7 +15,7 @@ Feature: Add datas
     """
     {
       "owner": "BusinessUnit",
-      "ownerUuid": "d5de44e0-d727-4f69-a8b3-c3afbf75eda3",
+      "ownerUuid": "e51aea66-ba28-4718-9644-e5fc35ad7a45",
       "slug": "data-1",
       "title": {
         "en": "Title - add",
@@ -45,12 +45,30 @@ Feature: Add datas
     And the JSON node "owner" should exist
     And the JSON node "owner" should be equal to the string "BusinessUnit"
     And the JSON node "ownerUuid" should exist
-    And the JSON node "ownerUuid" should be equal to the string "d5de44e0-d727-4f69-a8b3-c3afbf75eda3"
+    And the JSON node "ownerUuid" should be equal to the string "e51aea66-ba28-4718-9644-e5fc35ad7a45"
     And the JSON node "slug" should exist
     And the JSON node "slug" should be equal to the string "data-1"
     And the JSON node "title" should exist
-#    And the JSON node "title" should be equal to "todo"
+    And the JSON node "title.en" should exist
+    And the JSON node "title.en" should be equal to "Title - add"
+    And the JSON node "title.fr" should exist
+    And the JSON node "title.fr" should be equal to "Titre - add"
     And the JSON node "data" should exist
-#    And the JSON node "data" should be equal to "todo"
+    And the JSON node "data.en" should exist
+    And the JSON node "data.en.test" should exist
+    And the JSON node "data.en.test" should be equal to "Test - add"
+    And the JSON node "data.fr" should exist
+    And the JSON node "data.fr.test" should exist
+    And the JSON node "data.fr.test" should be equal to "Test - add"
     And the JSON node "version" should exist
     And the JSON node "version" should be equal to the number 1
+
+  @dropSchema
+  Scenario: Read the added data
+    When I add "Accept" header equal to "application/json"
+    And I send a "GET" request to "/datas?id=2"
+    Then the response status code should be 200
+    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+    And the response should be in JSON
+    And the response should be a collection
+    And the response collection should count 1 items

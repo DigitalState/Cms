@@ -5,20 +5,19 @@ Feature: Edit datas
   I should be able to send api requests related to datas
 
   Background:
-    Given I am authenticated as a "system" identity
+    Given I am authenticated as the "system" identity
 
   @createSchema @loadFixtures
   Scenario: Edit a data
     When I add "Accept" header equal to "application/json"
     And I add "Content-Type" header equal to "application/json"
-    And I send a "PUT" request to "/datas/0bdc078a-4d24-4719-b00d-6342dd52e0d5" with body:
+    And I send a "PUT" request to "/datas/68c28209-cad4-43ac-9f76-fb1791d672da" with body:
     """
     {
-      "ownerUuid": "7b4f7178-da07-4004-8475-cdd120e26d2d",
       "slug": "data-1-edit",
       "title": {
         "en": "Title - edit",
-        "fr": "Title - edit"
+        "fr": "Titre - edit"
       },
       "data": {
         "en": {
@@ -33,25 +32,44 @@ Feature: Edit datas
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-    And the JSON node "ownerUuid" should be equal to the string "7b4f7178-da07-4004-8475-cdd120e26d2d"
     And the JSON node "slug" should be equal to the string "data-1-edit"
-#    And the JSON node "title" should be equal to "todo"
-#    And the JSON node "data" should be equal to "todo"
+    And the JSON node "title" should exist
+    And the JSON node "title.en" should exist
+    And the JSON node "title.en" should be equal to "Title - edit"
+    And the JSON node "title.fr" should exist
+    And the JSON node "title.fr" should be equal to "Titre - edit"
+    And the JSON node "data" should exist
+    And the JSON node "data.en" should exist
+    And the JSON node "data.en.test" should exist
+    And the JSON node "data.en.test" should be equal to "Test - edit"
+    And the JSON node "data.fr" should exist
+    And the JSON node "data.fr.test" should exist
+    And the JSON node "data.fr.test" should be equal to "Test - edit"
 
   Scenario: Confirm the edited data
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/datas/0bdc078a-4d24-4719-b00d-6342dd52e0d5"
+    And I send a "GET" request to "/datas/68c28209-cad4-43ac-9f76-fb1791d672da"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-    And the JSON node "ownerUuid" should be equal to the string "7b4f7178-da07-4004-8475-cdd120e26d2d"
-#    And the JSON node "title" should be equal to "todo"
-#    And the JSON node "data" should be equal to "todo"
+    And the JSON node "ownerUuid" should be equal to the string "e51aea66-ba28-4718-9644-e5fc35ad7a45"
+    And the JSON node "title" should exist
+    And the JSON node "title.en" should exist
+    And the JSON node "title.en" should be equal to "Title - edit"
+    And the JSON node "title.fr" should exist
+    And the JSON node "title.fr" should be equal to "Titre - edit"
+    And the JSON node "data" should exist
+    And the JSON node "data.en" should exist
+    And the JSON node "data.en.test" should exist
+    And the JSON node "data.en.test" should be equal to "Test - edit"
+    And the JSON node "data.fr" should exist
+    And the JSON node "data.fr.test" should exist
+    And the JSON node "data.fr.test" should be equal to "Test - edit"
 
   Scenario: Edit a data's read-only properties
     When I add "Accept" header equal to "application/json"
     And I add "Content-Type" header equal to "application/json"
-    And I send a "PUT" request to "/datas/0bdc078a-4d24-4719-b00d-6342dd52e0d5" with body:
+    And I send a "PUT" request to "/datas/68c28209-cad4-43ac-9f76-fb1791d672da" with body:
     """
     {
       "id": 9999,
@@ -65,19 +83,19 @@ Feature: Edit datas
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
     And the JSON node "id" should be equal to the number 1
-    And the JSON node "uuid" should be equal to the string "0bdc078a-4d24-4719-b00d-6342dd52e0d5"
+    And the JSON node "uuid" should be equal to the string "68c28209-cad4-43ac-9f76-fb1791d672da"
     And the JSON node "createdAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "updatedAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "deletedAt" should not contain "2000-01-01T12:00:00+00:00"
 
   Scenario: Confirm the unedited data
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/datas/0bdc078a-4d24-4719-b00d-6342dd52e0d5"
+    And I send a "GET" request to "/datas/68c28209-cad4-43ac-9f76-fb1791d672da"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
     And the JSON node "id" should be equal to the number 1
-    And the JSON node "uuid" should be equal to the string "0bdc078a-4d24-4719-b00d-6342dd52e0d5"
+    And the JSON node "uuid" should be equal to the string "68c28209-cad4-43ac-9f76-fb1791d672da"
     And the JSON node "createdAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "updatedAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "deletedAt" should not contain "2000-01-01T12:00:00+00:00"
@@ -86,7 +104,7 @@ Feature: Edit datas
   Scenario: Edit a data with an invalid optimistic lock
     When I add "Accept" header equal to "application/json"
     And I add "Content-Type" header equal to "application/json"
-    And I send a "PUT" request to "/datas/0bdc078a-4d24-4719-b00d-6342dd52e0d5" with body:
+    And I send a "PUT" request to "/datas/68c28209-cad4-43ac-9f76-fb1791d672da" with body:
     """
     {
       "slug": "road-classifications-edit",

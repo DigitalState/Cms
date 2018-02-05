@@ -5,11 +5,24 @@ Feature: Delete datas
   I should be able to send api requests related to datas
 
   Background:
-    Given I am authenticated as a "system" identity
+    Given I am authenticated as the "system" identity
 
-  @createSchema @loadFixtures @dropSchema
-  Scenario: Delete a category
+  @createSchema @loadFixtures
+  Scenario: Delete a data
     When I add "Accept" header equal to "application/json"
-    And I send a "DELETE" request to "/datas/0bdc078a-4d24-4719-b00d-6342dd52e0d5"
+    And I send a "DELETE" request to "/datas/68c28209-cad4-43ac-9f76-fb1791d672da"
     Then the response status code should be 204
     And the response should be empty
+
+  Scenario: Read the deleted data
+    When I add "Accept" header equal to "application/json"
+    And I send a "GET" request to "/datas/68c28209-cad4-43ac-9f76-fb1791d672da"
+    Then the response status code should be 404
+    And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
+
+  @dropSchema
+  Scenario: Delete a deleted data
+    When I add "Accept" header equal to "application/json"
+    And I send a "GET" request to "/datas/68c28209-cad4-43ac-9f76-fb1791d672da"
+    Then the response status code should be 404
+    And the header "Content-Type" should be equal to "application/problem+json; charset=utf-8"
