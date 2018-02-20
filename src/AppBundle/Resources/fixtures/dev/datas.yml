@@ -69,6 +69,36 @@ items:
             fr:
                 test: Exemple de traduction de l'administration
 
+    -
+        uuid: eac2a5ab-991f-4b4f-bbaf-6a8ad6b666f3
+        owner_uuid: b20a40d9-b95b-4462-b8f1-c7453b9b7067 # Portal
+        slug: portal-theme
+        title:
+            en: Portal Theme
+            fr: Thème du portail
+        data:
+            en:
+                meta:
+                    version: 1.0
+            fr:
+                meta:
+                    version: 1.0
+
+    -
+        uuid: 470951da-325b-42de-9205-1500683cd5f0
+        owner_uuid: c11c546e-bd01-47cf-97da-e25388357b5a # Administration
+        slug: admin-theme
+        title:
+            en: Admin Theme
+            fr: Thème d'administration
+        data:
+            en:
+                meta:
+                    version: 1.0
+            fr:
+                meta:
+                    version: 1.0
+
 prototype:
     uuid: ~
     owner: BusinessUnit
