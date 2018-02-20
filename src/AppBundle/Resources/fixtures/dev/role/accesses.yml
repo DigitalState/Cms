@@ -1,0 +1,31 @@
+items:
+    -
+        uuid: 28e5913f-7539-4501-bd5d-1eb28695ed0a
+        assignee_uuid: 5ab54dd5-56ed-4e96-bd8b-1d60ab668a75 # Administrator
+
+    -
+        uuid: 651d52e8-b55f-4325-8264-a33ae7844449
+        assignee_uuid: f06dd49d-8ad4-437a-beee-387b834ee217 # Manager
+
+    -
+        uuid: 9e872a74-b1a3-4899-a6fd-1e8023634268
+        assignee_uuid: 3e64bbd1-4d00-47e7-a35e-92691f5a6018 # Staff
+
+    -
+        uuid: 76b428df-dac8-4553-84d5-64be3850d36c
+        assignee_uuid: 54d82fc6-8ce7-498e-832f-3598664a9d9d # Individual
+
+    -
+        uuid: 5d547b5f-5fe9-4a40-9793-fdf4f6dcdbd0
+        assignee_uuid: 777b96e7-e183-44f7-b7e4-dc0cb7591f74 # Organization
+
+    -
+        uuid: 3f41f058-3d9c-49b4-ab93-2c43b451c7f7
+        assignee_uuid: d31057f7-066e-4397-8916-38bd39797b6c # Anonymous
+
+prototype:
+    uuid: ~
+    owner: BusinessUnit
+    owner_uuid: c11c546e-bd01-47cf-97da-e25388357b5a # Administration
+    assignee: Role
+    assignee_uuid: ~

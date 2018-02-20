@@ -1,57 +1,57 @@
 ds_security:
     permissions:
-        data:                    { title: app.permissions.data,                     entity:    AppBundle\Entity\Data,                   attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
-        data_property:           { title: app.permissions.data.property,            property:  AppBundle\Entity\Data.*,                 attributes: [BROWSE, READ, EDIT] }
-        data_id:                 { title: app.permissions.data.id,                  property:  AppBundle\Entity\Data.id,                attributes: [BROWSE, READ, EDIT] }
-        data_uuid:               { title: app.permissions.data.uuid,                property:  AppBundle\Entity\Data.uuid,              attributes: [BROWSE, READ, EDIT] }
-        data_created_at:         { title: app.permissions.data.created_at,          property:  AppBundle\Entity\Data.createdAt,         attributes: [BROWSE, READ, EDIT] }
-        data_updated_at:         { title: app.permissions.data.updated_at,          property:  AppBundle\Entity\Data.updatedAt,         attributes: [BROWSE, READ, EDIT] }
-        data_deleted_at:         { title: app.permissions.data.deleted_at,          property:  AppBundle\Entity\Data.deletedAt,         attributes: [BROWSE, READ, EDIT] }
-        data_owner:              { title: app.permissions.data.owner,               property:  AppBundle\Entity\Data.owner,             attributes: [BROWSE, READ, EDIT] }
-        data_owner_uuid:         { title: app.permissions.data.owner_uuid,          property:  AppBundle\Entity\Data.ownerUuid,         attributes: [BROWSE, READ, EDIT] }
-        data_slug:               { title: app.permissions.data.slug,                property:  AppBundle\Entity\Data.slug,              attributes: [BROWSE, READ, EDIT] }
-        data_title:              { title: app.permissions.data.title,               property:  AppBundle\Entity\Data.title,             attributes: [BROWSE, READ, EDIT] }
-        data_data:               { title: app.permissions.data.data,                property:  AppBundle\Entity\Data.data,              attributes: [BROWSE, READ, EDIT] }
-        data_version:            { title: app.permissions.data.version,             property:  AppBundle\Entity\Data.version,           attributes: [BROWSE, READ, EDIT] }
-        file:                    { title: app.permissions.file,                     entity:    AppBundle\Entity\File,                   attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
-        file_property:           { title: app.permissions.file.property,            property:  AppBundle\Entity\File.*,                 attributes: [BROWSE, READ, EDIT] }
-        file_id:                 { title: app.permissions.file.id,                  property:  AppBundle\Entity\File.id,                attributes: [BROWSE, READ, EDIT] }
-        file_uuid:               { title: app.permissions.file.uuid,                property:  AppBundle\Entity\File.uuid,              attributes: [BROWSE, READ, EDIT] }
-        file_created_at:         { title: app.permissions.file.created_at,          property:  AppBundle\Entity\File.createdAt,         attributes: [BROWSE, READ, EDIT] }
-        file_updated_at:         { title: app.permissions.file.updated_at,          property:  AppBundle\Entity\File.updatedAt,         attributes: [BROWSE, READ, EDIT] }
-        file_deleted_at:         { title: app.permissions.file.deleted_at,          property:  AppBundle\Entity\File.deletedAt,         attributes: [BROWSE, READ, EDIT] }
-        file_owner:              { title: app.permissions.file.owner,               property:  AppBundle\Entity\File.owner,             attributes: [BROWSE, READ, EDIT] }
-        file_owner_uuid:         { title: app.permissions.file.owner_uuid,          property:  AppBundle\Entity\File.ownerUuid,         attributes: [BROWSE, READ, EDIT] }
-        file_slug:               { title: app.permissions.file.slug,                property:  AppBundle\Entity\File.slug,              attributes: [BROWSE, READ, EDIT] }
-        file_title:              { title: app.permissions.file.title,               property:  AppBundle\Entity\File.title,             attributes: [BROWSE, READ, EDIT] }
-        file_description:        { title: app.permissions.file.description,         property:  AppBundle\Entity\File.description,       attributes: [BROWSE, READ, EDIT] }
-        file_presentation:       { title: app.permissions.file.presentation,        property:  AppBundle\Entity\File.presentation,      attributes: [BROWSE, READ, EDIT] }
-        file_type:               { title: app.permissions.file.type,                property:  AppBundle\Entity\File.type,              attributes: [BROWSE, READ, EDIT] }
-        file_version:            { title: app.permissions.file.version,             property:  AppBundle\Entity\File.version,           attributes: [BROWSE, READ, EDIT] }
-        text:                    { title: app.permissions.text,                     entity:    AppBundle\Entity\Text,                   attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
-        text_property:           { title: app.permissions.text.property,            property:  AppBundle\Entity\Text.*,                 attributes: [BROWSE, READ, EDIT] }
-        text_id:                 { title: app.permissions.text.id,                  property:  AppBundle\Entity\Text.id,                attributes: [BROWSE, READ, EDIT] }
-        text_uuid:               { title: app.permissions.text.uuid,                property:  AppBundle\Entity\Text.uuid,              attributes: [BROWSE, READ, EDIT] }
-        text_created_at:         { title: app.permissions.text.created_at,          property:  AppBundle\Entity\Text.createdAt,         attributes: [BROWSE, READ, EDIT] }
-        text_updated_at:         { title: app.permissions.text.updated_at,          property:  AppBundle\Entity\Text.updatedAt,         attributes: [BROWSE, READ, EDIT] }
-        text_deleted_at:         { title: app.permissions.text.deleted_at,          property:  AppBundle\Entity\Text.deletedAt,         attributes: [BROWSE, READ, EDIT] }
-        text_owner:              { title: app.permissions.text.owner,               property:  AppBundle\Entity\Text.owner,             attributes: [BROWSE, READ, EDIT] }
-        text_owner_uuid:         { title: app.permissions.text.owner_uuid,          property:  AppBundle\Entity\Text.ownerUuid,         attributes: [BROWSE, READ, EDIT] }
-        text_slug:               { title: app.permissions.text.slug,                property:  AppBundle\Entity\Text.slug,              attributes: [BROWSE, READ, EDIT] }
-        text_title:              { title: app.permissions.text.title,               property:  AppBundle\Entity\Text.title,             attributes: [BROWSE, READ, EDIT] }
-        text_value:              { title: app.permissions.text.value,               property:  AppBundle\Entity\Text.value,             attributes: [BROWSE, READ, EDIT] }
-        text_version:            { title: app.permissions.text.version,             property:  AppBundle\Entity\Text.version,           attributes: [BROWSE, READ, EDIT] }
-        page:                    { title: app.permissions.page,                     entity:    AppBundle\Entity\Page,                   attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
-        page_property:           { title: app.permissions.page.property,            property:  AppBundle\Entity\Page.*,                 attributes: [BROWSE, READ, EDIT] }
-        page_id:                 { title: app.permissions.page.id,                  property:  AppBundle\Entity\Page.id,                attributes: [BROWSE, READ, EDIT] }
-        page_uuid:               { title: app.permissions.page.uuid,                property:  AppBundle\Entity\Page.uuid,              attributes: [BROWSE, READ, EDIT] }
-        page_created_at:         { title: app.permissions.page.created_at,          property:  AppBundle\Entity\Page.createdAt,         attributes: [BROWSE, READ, EDIT] }
-        page_updated_at:         { title: app.permissions.page.updated_at,          property:  AppBundle\Entity\Page.updatedAt,         attributes: [BROWSE, READ, EDIT] }
-        page_deleted_at:         { title: app.permissions.page.deleted_at,          property:  AppBundle\Entity\Page.deletedAt,         attributes: [BROWSE, READ, EDIT] }
-        page_owner:              { title: app.permissions.page.owner,               property:  AppBundle\Entity\Page.owner,             attributes: [BROWSE, READ, EDIT] }
-        page_owner_uuid:         { title: app.permissions.page.owner_uuid,          property:  AppBundle\Entity\Page.ownerUuid,         attributes: [BROWSE, READ, EDIT] }
-        page_slug:               { title: app.permissions.page.slug,                property:  AppBundle\Entity\Page.slug,              attributes: [BROWSE, READ, EDIT] }
-        page_title:              { title: app.permissions.page.title,               property:  AppBundle\Entity\Page.title,             attributes: [BROWSE, READ, EDIT] }
-        page_description:        { title: app.permissions.page.description,         property:  AppBundle\Entity\Page.description,       attributes: [BROWSE, READ, EDIT] }
-        page_version:            { title: app.permissions.page.version,             property:  AppBundle\Entity\Page.version,           attributes: [BROWSE, READ, EDIT] }
-        content:                 { title: app.permissions.content,                  custom:    Content,                                 attributes: [BROWSE, READ] }
+        data:              { attributes: [BROWSE, READ, EDIT, ADD, DELETE], entity:   AppBundle\Entity\Data,              title: app.permissions.data              }
+        data_property:     { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Data.*,            title: app.permissions.data.property     }
+        data_id:           { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Data.id,           title: app.permissions.data.id           }
+        data_uuid:         { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Data.uuid,         title: app.permissions.data.uuid         }
+        data_created_at:   { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Data.createdAt,    title: app.permissions.data.created_at   }
+        data_updated_at:   { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Data.updatedAt,    title: app.permissions.data.updated_at   }
+        data_deleted_at:   { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Data.deletedAt,    title: app.permissions.data.deleted_at   }
+        data_owner:        { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Data.owner,        title: app.permissions.data.owner        }
+        data_owner_uuid:   { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Data.ownerUuid,    title: app.permissions.data.owner_uuid   }
+        data_slug:         { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Data.slug,         title: app.permissions.data.slug         }
+        data_title:        { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Data.title,        title: app.permissions.data.title        }
+        data_data:         { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Data.data,         title: app.permissions.data.data         }
+        data_version:      { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Data.version,      title: app.permissions.data.version      }
+        file:              { attributes: [BROWSE, READ, EDIT, ADD, DELETE], entity:   AppBundle\Entity\File,              title: app.permissions.file              }
+        file_property:     { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\File.*,            title: app.permissions.file.property     }
+        file_id:           { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\File.id,           title: app.permissions.file.id           }
+        file_uuid:         { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\File.uuid,         title: app.permissions.file.uuid         }
+        file_created_at:   { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\File.createdAt,    title: app.permissions.file.created_at   }
+        file_updated_at:   { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\File.updatedAt,    title: app.permissions.file.updated_at   }
+        file_deleted_at:   { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\File.deletedAt,    title: app.permissions.file.deleted_at   }
+        file_owner:        { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\File.owner,        title: app.permissions.file.owner        }
+        file_owner_uuid:   { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\File.ownerUuid,    title: app.permissions.file.owner_uuid   }
+        file_slug:         { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\File.slug,         title: app.permissions.file.slug         }
+        file_title:        { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\File.title,        title: app.permissions.file.title        }
+        file_description:  { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\File.description,  title: app.permissions.file.description  }
+        file_presentation: { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\File.presentation, title: app.permissions.file.presentation }
+        file_type:         { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\File.type,         title: app.permissions.file.type         }
+        file_version:      { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\File.version,      title: app.permissions.file.version      }
+        text:              { attributes: [BROWSE, READ, EDIT, ADD, DELETE], entity:   AppBundle\Entity\Text,              title: app.permissions.text              }
+        text_property:     { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Text.*,            title: app.permissions.text.property     }
+        text_id:           { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Text.id,           title: app.permissions.text.id           }
+        text_uuid:         { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Text.uuid,         title: app.permissions.text.uuid         }
+        text_created_at:   { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Text.createdAt,    title: app.permissions.text.created_at   }
+        text_updated_at:   { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Text.updatedAt,    title: app.permissions.text.updated_at   }
+        text_deleted_at:   { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Text.deletedAt,    title: app.permissions.text.deleted_at   }
+        text_owner:        { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Text.owner,        title: app.permissions.text.owner        }
+        text_owner_uuid:   { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Text.ownerUuid,    title: app.permissions.text.owner_uuid   }
+        text_slug:         { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Text.slug,         title: app.permissions.text.slug         }
+        text_title:        { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Text.title,        title: app.permissions.text.title        }
+        text_value:        { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Text.value,        title: app.permissions.text.value        }
+        text_version:      { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Text.version,      title: app.permissions.text.version      }
+        page:              { attributes: [BROWSE, READ, EDIT, ADD, DELETE], entity:   AppBundle\Entity\Page,              title: app.permissions.page              }
+        page_property:     { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Page.*,            title: app.permissions.page.property     }
+        page_id:           { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Page.id,           title: app.permissions.page.id           }
+        page_uuid:         { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Page.uuid,         title: app.permissions.page.uuid         }
+        page_created_at:   { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Page.createdAt,    title: app.permissions.page.created_at   }
+        page_updated_at:   { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Page.updatedAt,    title: app.permissions.page.updated_at   }
+        page_deleted_at:   { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Page.deletedAt,    title: app.permissions.page.deleted_at   }
+        page_owner:        { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Page.owner,        title: app.permissions.page.owner        }
+        page_owner_uuid:   { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Page.ownerUuid,    title: app.permissions.page.owner_uuid   }
+        page_slug:         { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Page.slug,         title: app.permissions.page.slug         }
+        page_title:        { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Page.title,        title: app.permissions.page.title        }
+        page_description:  { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Page.description,  title: app.permissions.page.description  }
+        page_version:      { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Page.version,      title: app.permissions.page.version      }
+        content:           { attributes: [BROWSE, READ],                    generic:  Content,                            title: app.permissions.content           }
