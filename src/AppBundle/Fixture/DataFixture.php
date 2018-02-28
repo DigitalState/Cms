@@ -1,10 +1,10 @@
 <?php
 
-namespace AppBundle\Fixture\ORM;
+namespace AppBundle\Fixture;
 
 use AppBundle\Entity\Data;
 use Doctrine\Common\Persistence\ObjectManager;
-use Ds\Component\Database\Fixture\ORM\ResourceFixture;
+use Ds\Component\Database\Fixture\ResourceFixture;
 
 /**
  * Class DataFixture

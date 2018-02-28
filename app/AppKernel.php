@@ -31,6 +31,7 @@ class AppKernel extends Kernel
 //            new Dunglas\DoctrineJsonOdm\Bundle\DunglasDoctrineJsonOdmBundle(),
             new Ds\Component\Api\Bridge\Symfony\Bundle\DsApiBundle(),
             new Ds\Component\Config\Bridge\Symfony\Bundle\DsConfigBundle(),
+            new Ds\Component\Discovery\Bridge\Symfony\Bundle\DsDiscoveryBundle(),
             new Ds\Component\Entity\Bridge\Symfony\Bundle\DsEntityBundle(),
             new Ds\Component\Health\Bridge\Symfony\Bundle\DsHealthBundle(),
             new Ds\Component\Locale\Bridge\Symfony\Bundle\DsLocaleBundle(),

@@ -1,4 +1,8 @@
 parameters:
+    app: cms
+
+    discovery_host: api.discovery.ds
+
     database_host: cms_db
     database_port: 5432
     database_name: cms

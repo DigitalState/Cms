@@ -1,14 +1,14 @@
 <?php
 
-namespace AppBundle\Fixtures\ORM;
+namespace AppBundle\Fixtures;
 
-use AppBundle\Fixture\ORM\FileFixture;
+use AppBundle\Fixture\DataFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
 /**
- * Class Files
+ * Class Datas
  */
-class Files extends FileFixture implements OrderedFixtureInterface
+class Datas extends DataFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritdoc}
@@ -23,6 +23,6 @@ class Files extends FileFixture implements OrderedFixtureInterface
      */
     protected function getResource()
     {
-        return '/srv/api-platform/src/AppBundle/Resources/fixtures/{env}/files.yml';
+        return '/srv/api-platform/src/AppBundle/Resources/fixtures/{env}/datas.yml';
     }
 }
