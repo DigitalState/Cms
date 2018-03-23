@@ -3,7 +3,7 @@ parameters:
 
     discovery_host: api.discovery.ds
 
-    database_host: cms_db
+    database_host: cms_database
     database_port: 5432
     database_name: cms
     database_user: cms
