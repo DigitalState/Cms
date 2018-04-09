@@ -2,6 +2,8 @@
 
 Description...
 
+[![Build Status](https://travis-ci.org/DigitalState/Cms.svg?branch=develop)](https://travis-ci.org/DigitalState/Cms)
+
 ## Table of Contents
 
 - [Synopsis](#synopsis)
