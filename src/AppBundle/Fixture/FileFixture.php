@@ -16,28 +16,21 @@ abstract class FileFixture extends ResourceFixture
      */
     public function load(ObjectManager $manager)
     {
-        $files = $this->parse($this->getResource());
+        $objects = $this->parse($this->getResource());
 
-        foreach ($files as $file) {
-            $entity = new File;
-            $entity
-                ->setUuid($file['uuid'])
-                ->setOwner($file['owner'])
-                ->setOwnerUuid($file['owner_uuid'])
-                ->setSlug($file['slug'])
-                ->setTitle($file['title'])
-                ->setDescription($file['description'])
-                ->setPresentation($file['presentation'])
-                ->setType($file['type']);
-            $manager->persist($entity);
+        foreach ($objects as $object) {
+            $file = new File;
+            $file
+                ->setUuid($object->uuid)
+                ->setOwner($object->owner)
+                ->setOwnerUuid($object->owner_uuid)
+                ->setSlug($object->slug)
+                ->setTitle((array) $object->title)
+                ->setDescription((array) $object->description)
+                ->setPresentation((array) $object->presentation)
+                ->setType($object->type);
+            $manager->persist($file);
             $manager->flush();
         }
     }
-
-    /**
-     * Get resource
-     *
-     * @return string
-     */
-    abstract protected function getResource();
 }

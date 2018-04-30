@@ -16,26 +16,19 @@ abstract class TextFixture extends ResourceFixture
      */
     public function load(ObjectManager $manager)
     {
-        $texts = $this->parse($this->getResource());
+        $objects = $this->parse($this->getResource());
 
-        foreach ($texts as $text) {
-            $entity = new Text;
-            $entity
-                ->setUuid($text['uuid'])
-                ->setOwner($text['owner'])
-                ->setOwnerUuid($text['owner_uuid'])
-                ->setSlug($text['slug'])
-                ->setTitle($text['title'])
-                ->setValue($text['value']);
-            $manager->persist($entity);
+        foreach ($objects as $object) {
+            $text = new Text;
+            $text
+                ->setUuid($object->uuid)
+                ->setOwner($object->owner)
+                ->setOwnerUuid($object->owner_uuid)
+                ->setSlug($object->slug)
+                ->setTitle((array) $object->title)
+                ->setValue((array) $object->value);
+            $manager->persist($text);
             $manager->flush();
         }
     }
-
-    /**
-     * Get resource
-     *
-     * @return string
-     */
-    abstract protected function getResource();
 }

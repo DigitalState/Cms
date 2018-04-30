@@ -1,9 +1,9 @@
-items: []
+fixtures: []
 
 prototype:
-    uuid: ~
-    owner: BusinessUnit
-    owner_uuid: ~
-    slug: ~
-    title: []
-    value: []
+  uuid: ~
+  owner: BusinessUnit
+  owner_uuid: ~
+  slug: ~
+  title: []
+  value: []

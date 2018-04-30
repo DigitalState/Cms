@@ -16,26 +16,19 @@ abstract class DataFixture extends ResourceFixture
      */
     public function load(ObjectManager $manager)
     {
-        $datas = $this->parse($this->getResource());
+        $objects = $this->parse($this->getResource());
 
-        foreach ($datas as $data) {
-            $entity = new Data;
-            $entity
-                ->setUuid($data['uuid'])
-                ->setOwner($data['owner'])
-                ->setOwnerUuid($data['owner_uuid'])
-                ->setSlug($data['slug'])
-                ->setTitle($data['title'])
-                ->setData($data['data']);
-            $manager->persist($entity);
+        foreach ($objects as $object) {
+            $data = new Data;
+            $data
+                ->setUuid($object->uuid)
+                ->setOwner($object->owner)
+                ->setOwnerUuid($object->owner_uuid)
+                ->setSlug($object->slug)
+                ->setTitle((array) $object->title)
+                ->setData((array) $object->data);
+            $manager->persist($data);
             $manager->flush();
         }
     }
-
-    /**
-     * Get resource
-     *
-     * @return string
-     */
-    abstract protected function getResource();
 }
