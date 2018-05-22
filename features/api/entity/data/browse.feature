@@ -1,11 +1,11 @@
-@app @entity @data @browse
+@app @api @entity @data @browse
 Feature: Browse datas
   In order to browse datas
   As a system identity
   I should be able to send api requests related to datas
 
   Background:
-    Given I am authenticated as the "system" identity
+    Given I am authenticated as the "System" identity from the tenant "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
   @createSchema @loadFixtures
   Scenario: Browse all datas

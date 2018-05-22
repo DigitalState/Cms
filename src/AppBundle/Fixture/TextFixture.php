@@ -26,7 +26,8 @@ abstract class TextFixture extends ResourceFixture
                 ->setOwnerUuid($object->owner_uuid)
                 ->setSlug($object->slug)
                 ->setTitle((array) $object->title)
-                ->setValue((array) $object->value);
+                ->setValue((array) $object->value)
+                ->setTenant($object->tenant);
             $manager->persist($text);
             $manager->flush();
         }

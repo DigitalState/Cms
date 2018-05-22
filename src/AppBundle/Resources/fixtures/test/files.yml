@@ -5,7 +5,8 @@ prototype:
   owner: BusinessUnit
   owner_uuid: ~
   slug: ~
-  title: []
-  description: []
-  presentation: []
+  title: {}
+  description: {}
+  presentation: {}
   type: ~
+  tenant: ~

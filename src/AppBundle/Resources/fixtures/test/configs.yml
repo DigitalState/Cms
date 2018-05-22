@@ -1,27 +1,75 @@
 fixtures:
   - uuid: 6035543c-a289-464d-bf10-a06c72a6637b
+    owner_uuid: 325e1004-8516-4ca9-a4d3-d7505bd9a7fe # Administration
     key: ds_api.user.username
     value: system@system.ds
+    tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
 
   - uuid: 09b4297d-e9f1-4e02-a4bf-cd62f1581d47
+    owner_uuid: 325e1004-8516-4ca9-a4d3-d7505bd9a7fe # Administration
     key: ds_api.user.password
     value: system
+    tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
 
   - uuid: e52af2d1-3cab-4653-b249-17df984f1a23
+    owner_uuid: 325e1004-8516-4ca9-a4d3-d7505bd9a7fe # Administration
     key: ds_api.user.uuid
     value: 85726ec8-7685-4655-ac91-4746ae71c2cc # System
+    tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
 
   - uuid: 9fc6cded-c773-407f-8826-53c7358f077c
+    owner_uuid: 325e1004-8516-4ca9-a4d3-d7505bd9a7fe # Administration
     key: ds_api.user.roles
     value: ROLE_SYSTEM
+    tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
 
   - uuid: 249eb4c4-2a34-40a9-a625-fb79f078ef6a
+    owner_uuid: 325e1004-8516-4ca9-a4d3-d7505bd9a7fe # Administration
     key: ds_api.user.identity
     value: System
+    tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
 
   - uuid: 3acd19ad-fd94-44e2-8c66-fef4af382ed2
+    owner_uuid: 325e1004-8516-4ca9-a4d3-d7505bd9a7fe # Administration
     key: ds_api.user.identity_uuid
     value: aa18b644-a503-49fa-8f53-10f4c1f8e3a1 # System
+    tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
+
+  - uuid: 0db67e7e-c3f0-42e6-84cd-d1db22581988
+    owner_uuid: 72ecd949-6960-4d9d-8baa-3dc15c2cbd63 # Administration
+    key: ds_api.user.username
+    value: system@system.ds
+    tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
+
+  - uuid: e6fffb9c-1a3e-4312-a43c-390f9ff880af
+    owner_uuid: 72ecd949-6960-4d9d-8baa-3dc15c2cbd63 # Administration
+    key: ds_api.user.password
+    value: system
+    tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
+
+  - uuid: 0dbb480a-579f-42c7-8777-d176e7eef556
+    owner_uuid: 72ecd949-6960-4d9d-8baa-3dc15c2cbd63 # Administration
+    key: ds_api.user.uuid
+    value: 85726ec8-7685-4655-ac91-4746ae71c2cc # System
+    tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
+
+  - uuid: 1ec3f18d-28da-4006-bd9d-cc1fa08d618d
+    owner_uuid: 72ecd949-6960-4d9d-8baa-3dc15c2cbd63 # Administration
+    key: ds_api.user.roles
+    value: ROLE_SYSTEM
+    tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
+
+  - uuid: 3ca82d07-338a-4f11-8359-6213123d0b2e
+    owner_uuid: 72ecd949-6960-4d9d-8baa-3dc15c2cbd63 # Administration
+    key: ds_api.user.identity
+    value: System
+    tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
+
+  - uuid: a85df15e-f7d8-4357-966e-ba6371041535
+    owner_uuid: 72ecd949-6960-4d9d-8baa-3dc15c2cbd63 # Administration
+    key: ds_api.user.identity_uuid
+    value: aa18b644-a503-49fa-8f53-10f4c1f8e3a1 # System
+    tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
 
 prototype:
   uuid: ~
@@ -30,3 +78,4 @@ prototype:
   key: ~
   value: ~
   enabled: true
+  tenant: ~

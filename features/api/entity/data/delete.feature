@@ -1,11 +1,11 @@
-@app @entity @data @delete
+@app @api @entity @data @delete
 Feature: Delete datas
   In order to delete datas
   As a system identity
   I should be able to send api requests related to datas
 
   Background:
-    Given I am authenticated as the "system" identity
+    Given I am authenticated as the "System" identity from the tenant "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
   @createSchema @loadFixtures
   Scenario: Delete a data

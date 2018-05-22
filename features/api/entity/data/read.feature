@@ -1,11 +1,11 @@
-@app @entity @data @read
+@app @api @entity @data @read
 Feature: Read datas
   In order to read datas
   As a system identity
   I should be able to send api requests related to datas
 
   Background:
-    Given I am authenticated as the "system" identity
+    Given I am authenticated as the "System" identity from the tenant "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
   @createSchema @loadFixtures @dropSchema
   Scenario: Read a category
@@ -42,3 +42,5 @@ Feature: Read datas
     And the JSON node "data.fr.city-freeway" should be equal to "Autoroute de ville"
     And the JSON node "version" should exist
     And the JSON node "version" should be equal to the number 1
+    And the JSON node "tenant" should exist
+    And the JSON node "tenant" should be equal to "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"

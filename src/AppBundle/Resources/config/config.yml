@@ -13,6 +13,7 @@ ds_security:
         data_title:        { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Data.title,        title: app.permissions.data.title        }
         data_data:         { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Data.data,         title: app.permissions.data.data         }
         data_version:      { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Data.version,      title: app.permissions.data.version      }
+        data_tenant:       { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Data.tenant,       title: app.permissions.data.tenant       }
         file:              { attributes: [BROWSE, READ, EDIT, ADD, DELETE], entity:   AppBundle\Entity\File,              title: app.permissions.file              }
         file_property:     { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\File.*,            title: app.permissions.file.property     }
         file_id:           { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\File.id,           title: app.permissions.file.id           }
@@ -28,6 +29,7 @@ ds_security:
         file_presentation: { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\File.presentation, title: app.permissions.file.presentation }
         file_type:         { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\File.type,         title: app.permissions.file.type         }
         file_version:      { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\File.version,      title: app.permissions.file.version      }
+        file_tenant:       { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\File.tenant,       title: app.permissions.file.tenant       }
         text:              { attributes: [BROWSE, READ, EDIT, ADD, DELETE], entity:   AppBundle\Entity\Text,              title: app.permissions.text              }
         text_property:     { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Text.*,            title: app.permissions.text.property     }
         text_id:           { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Text.id,           title: app.permissions.text.id           }
@@ -41,6 +43,7 @@ ds_security:
         text_title:        { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Text.title,        title: app.permissions.text.title        }
         text_value:        { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Text.value,        title: app.permissions.text.value        }
         text_version:      { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Text.version,      title: app.permissions.text.version      }
+        text_tenant:       { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Text.tenant,       title: app.permissions.text.tenant       }
         page:              { attributes: [BROWSE, READ, EDIT, ADD, DELETE], entity:   AppBundle\Entity\Page,              title: app.permissions.page              }
         page_property:     { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Page.*,            title: app.permissions.page.property     }
         page_id:           { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Page.id,           title: app.permissions.page.id           }
@@ -54,4 +57,5 @@ ds_security:
         page_title:        { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Page.title,        title: app.permissions.page.title        }
         page_description:  { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Page.description,  title: app.permissions.page.description  }
         page_version:      { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Page.version,      title: app.permissions.page.version      }
+        page_tenant:       { attributes: [BROWSE, READ, EDIT],              property: AppBundle\Entity\Page.tenant,       title: app.permissions.page.tenant       }
         content:           { attributes: [BROWSE, READ],                    generic:  Content,                            title: app.permissions.content           }

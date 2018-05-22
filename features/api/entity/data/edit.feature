@@ -1,11 +1,11 @@
-@app @entity @data @edit
+@app @api @entity @data @edit
 Feature: Edit datas
   In order to edit datas
   As a system identity
   I should be able to send api requests related to datas
 
   Background:
-    Given I am authenticated as the "system" identity
+    Given I am authenticated as the "System" identity from the tenant "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
   @createSchema @loadFixtures
   Scenario: Edit a data
@@ -45,6 +45,8 @@ Feature: Edit datas
     And the JSON node "data.fr" should exist
     And the JSON node "data.fr.test" should exist
     And the JSON node "data.fr.test" should be equal to "Test - edit"
+    And the JSON node "tenant" should exist
+    And the JSON node "tenant" should be equal to "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
   Scenario: Confirm the edited data
     When I add "Accept" header equal to "application/json"
@@ -65,6 +67,8 @@ Feature: Edit datas
     And the JSON node "data.fr" should exist
     And the JSON node "data.fr.test" should exist
     And the JSON node "data.fr.test" should be equal to "Test - edit"
+    And the JSON node "tenant" should exist
+    And the JSON node "tenant" should be equal to "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
   Scenario: Edit a data's read-only properties
     When I add "Accept" header equal to "application/json"
@@ -76,7 +80,8 @@ Feature: Edit datas
       "uuid": "40a0f921-18ac-4d94-b08d-ea647be20ae1",
       "createdAt":"2000-01-01T12:00:00+00:00",
       "updatedAt":"2000-01-01T12:00:00+00:00",
-      "deletedAt":"2000-01-01T12:00:00+00:00"
+      "deletedAt":"2000-01-01T12:00:00+00:00",
+      "tenant": "ba70cf66-3fef-4e8b-9ac7-7e875b229e24"
     }
     """
     Then the response status code should be 200
@@ -87,6 +92,7 @@ Feature: Edit datas
     And the JSON node "createdAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "updatedAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "deletedAt" should not contain "2000-01-01T12:00:00+00:00"
+    And the JSON node "tenant" should be equal to "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
   Scenario: Confirm the unedited data
     When I add "Accept" header equal to "application/json"
@@ -99,6 +105,7 @@ Feature: Edit datas
     And the JSON node "createdAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "updatedAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "deletedAt" should not contain "2000-01-01T12:00:00+00:00"
+    And the JSON node "tenant" should be equal to "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
   @dropSchema
   Scenario: Edit a data with an invalid optimistic lock

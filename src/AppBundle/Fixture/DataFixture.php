@@ -26,7 +26,8 @@ abstract class DataFixture extends ResourceFixture
                 ->setOwnerUuid($object->owner_uuid)
                 ->setSlug($object->slug)
                 ->setTitle((array) $object->title)
-                ->setData((array) $object->data);
+                ->setData((array) $object->data)
+                ->setTenant($object->tenant);
             $manager->persist($data);
             $manager->flush();
         }

@@ -1,6 +1,5 @@
 fixtures:
-  -
-    uuid: c859dbd2-2fc1-4b3b-b00a-00e15b1dbac0
+  - uuid: c859dbd2-2fc1-4b3b-b00a-00e15b1dbac0
     owner_uuid: b20a40d9-b95b-4462-b8f1-c7453b9b7067 # Portal
     slug: road-classifications
     title:
@@ -18,8 +17,7 @@ fixtures:
         collector-roads: Routes collectrices et routes collectrices principales
         local-roads: Rues locales
 
-  -
-    uuid: b6c98dde-a396-47b7-9293-16f42ee131ea
+  - uuid: b6c98dde-a396-47b7-9293-16f42ee131ea
     owner_uuid: b20a40d9-b95b-4462-b8f1-c7453b9b7067 # Portal
     slug: translation
     title:
@@ -37,8 +35,7 @@ fixtures:
           menu:
             sampleItem: Exemple d'article
 
-  -
-    uuid: 7581cbf4-01f8-4270-96c7-90545c6be685
+  - uuid: 7581cbf4-01f8-4270-96c7-90545c6be685
     owner_uuid: b20a40d9-b95b-4462-b8f1-c7453b9b7067 # Portal
     slug: portal-translation
     title:
@@ -56,8 +53,7 @@ fixtures:
           menu:
             myItem: Mon article
 
-  -
-    uuid: 6e47e01d-410b-4063-a574-6f43f85e20fd
+  - uuid: 6e47e01d-410b-4063-a574-6f43f85e20fd
     owner_uuid: c11c546e-bd01-47cf-97da-e25388357b5a # Administration
     slug: admin-translation
     title:
@@ -69,8 +65,7 @@ fixtures:
       fr:
         test: Exemple de traduction de l'administration
 
-  -
-    uuid: eac2a5ab-991f-4b4f-bbaf-6a8ad6b666f3
+  - uuid: eac2a5ab-991f-4b4f-bbaf-6a8ad6b666f3
     owner_uuid: b20a40d9-b95b-4462-b8f1-c7453b9b7067 # Portal
     slug: portal-theme
     title:
@@ -84,8 +79,7 @@ fixtures:
         meta:
           version: 1.0
 
-  -
-    uuid: 470951da-325b-42de-9205-1500683cd5f0
+  - uuid: 470951da-325b-42de-9205-1500683cd5f0
     owner_uuid: c11c546e-bd01-47cf-97da-e25388357b5a # Administration
     slug: admin-theme
     title:
@@ -104,5 +98,6 @@ prototype:
   owner: BusinessUnit
   owner_uuid: ~
   slug: ~
-  title: []
-  data: []
+  title: {}
+  data: {}
+  tenant: e5a2120d-6bf7-4c58-a900-bac1e55e986b # Tenant 1
