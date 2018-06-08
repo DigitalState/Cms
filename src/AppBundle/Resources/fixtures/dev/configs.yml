@@ -13,14 +13,18 @@ fixtures:
 
   - uuid: 875b415d-b07f-4a9b-ae68-be940437fc1b
     key: ds_api.user.roles
-    value: ROLE_SYSTEM
+    value: []
+
+  - uuid: d529d6a6-91bf-4ee6-bf17-ccdabeaa6d4a
+    key: ds_api.user.identity.roles
+    value: []
 
   - uuid: b25ce6b4-b354-42d7-be7b-4cd68e696ee4
-    key: ds_api.user.identity
+    key: ds_api.user.identity.type
     value: System
 
   - uuid: 592f4826-6a2c-4d9f-bd5f-124a2205ac1c
-    key: ds_api.user.identity_uuid
+    key: ds_api.user.identity.uuid
     value: fe1b94ed-783a-48d7-8bf2-2f9cea89f11e # System
 
   - uuid: 938f86f6-5e51-4d6d-8c63-65756cb6d87a

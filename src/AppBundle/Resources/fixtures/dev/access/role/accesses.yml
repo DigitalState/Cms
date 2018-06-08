@@ -14,8 +14,7 @@ fixtures:
   - uuid: 5d547b5f-5fe9-4a40-9793-fdf4f6dcdbd0
     assignee_uuid: 777b96e7-e183-44f7-b7e4-dc0cb7591f74 # Organization
 
-  - uuid: 3f41f058-3d9c-49b4-ab93-2c43b451c7f7
-    assignee_uuid: d31057f7-066e-4397-8916-38bd39797b6c # Anonymous
+
 
 prototype:
   uuid: ~
