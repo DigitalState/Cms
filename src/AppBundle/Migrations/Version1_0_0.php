@@ -23,6 +23,7 @@ class Version1_0_0 extends AbstractMigration
 
         // Schema
         $this->addSql('CREATE SEQUENCE ds_config_id_seq INCREMENT BY 1 MINVALUE 1 START 9');
+        $this->addSql('CREATE SEQUENCE ds_parameter_id_seq INCREMENT BY 1 MINVALUE 1 START 2');
         $this->addSql('CREATE SEQUENCE ds_access_id_seq INCREMENT BY 1 MINVALUE 1 START 3');
         $this->addSql('CREATE SEQUENCE ds_access_permission_id_seq INCREMENT BY 1 MINVALUE 1 START 7');
         $this->addSql('CREATE SEQUENCE app_data_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
@@ -36,6 +37,8 @@ class Version1_0_0 extends AbstractMigration
         $this->addSql('CREATE TABLE ds_config (id INT NOT NULL, uuid UUID NOT NULL, "owner" VARCHAR(255) DEFAULT NULL, owner_uuid UUID DEFAULT NULL, "key" VARCHAR(255) NOT NULL, value JSON DEFAULT NULL, enabled BOOLEAN NOT NULL, version INT DEFAULT 1 NOT NULL, tenant UUID NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_758C45F4D17F50A6 ON ds_config (uuid)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_758C45F48A90ABA94E59C462 ON ds_config (key, tenant)');
+        $this->addSql('CREATE TABLE ds_parameter (id INT NOT NULL, "key" VARCHAR(255) NOT NULL, value JSON DEFAULT NULL, enabled BOOLEAN NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_B3C0FD91F48571EB ON ds_parameter ("key")');
         $this->addSql('CREATE TABLE ds_access (id INT NOT NULL, uuid UUID NOT NULL, "owner" VARCHAR(255) DEFAULT NULL, owner_uuid UUID DEFAULT NULL, assignee VARCHAR(255) DEFAULT NULL, assignee_uuid UUID DEFAULT NULL, version INT DEFAULT 1 NOT NULL, tenant UUID NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_A76F41DCD17F50A6 ON ds_access (uuid)');
         $this->addSql('CREATE TABLE ds_access_permission (id INT NOT NULL, access_id INT DEFAULT NULL, scope VARCHAR(255) DEFAULT NULL, entity VARCHAR(255) DEFAULT NULL, entity_uuid UUID DEFAULT NULL, "key" VARCHAR(255) NOT NULL, attributes JSON NOT NULL, tenant UUID NOT NULL, PRIMARY KEY(id))');
@@ -92,6 +95,13 @@ class Version1_0_0 extends AbstractMigration
 
         $this->addSql('
             INSERT INTO 
+                ds_parameter (id, key, value, enabled)
+            VALUES 
+                (1, \'ds_tenant.tenant.default\', \'"'.$data['tenant']['uuid'].'"\', true);
+        ');
+
+        $this->addSql('
+            INSERT INTO 
                 ds_access (id, uuid, owner, owner_uuid, assignee, assignee_uuid, version, tenant, created_at, updated_at)
             VALUES 
                 (1, \''.Uuid::uuid4()->toString().'\', \'System\', \''.$data['identity']['system']['uuid'].'\', \'System\', \''.$data['identity']['system']['uuid'].'\', 1, \''.$data['tenant']['uuid'].'\', now(), now()),
@@ -127,6 +137,7 @@ class Version1_0_0 extends AbstractMigration
         $this->addSql('ALTER TABLE app_page_trans DROP CONSTRAINT FK_40BB4A172C2AC5D3');
         $this->addSql('ALTER TABLE app_text_trans DROP CONSTRAINT FK_708E0F9C2C2AC5D3');
         $this->addSql('DROP SEQUENCE ds_config_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE ds_parameter_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE ds_access_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE ds_access_permission_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE app_data_id_seq CASCADE');
@@ -138,6 +149,7 @@ class Version1_0_0 extends AbstractMigration
         $this->addSql('DROP SEQUENCE app_text_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE app_text_trans_id_seq CASCADE');
         $this->addSql('DROP TABLE ds_config');
+        $this->addSql('DROP TABLE ds_parameter');
         $this->addSql('DROP TABLE ds_access');
         $this->addSql('DROP TABLE ds_access_permission');
         $this->addSql('DROP TABLE app_data');
