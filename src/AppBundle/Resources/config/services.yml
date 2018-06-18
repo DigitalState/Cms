@@ -1,16 +1,16 @@
 services:
-    app.service.data:
-        class: AppBundle\Service\DataService
-        parent: ds_entity.service.entity
+  app.service.data:
+    class: AppBundle\Service\DataService
+    parent: ds_entity.service.entity
 
-    app.service.file:
-        class: AppBundle\Service\FileService
-        parent: ds_entity.service.entity
+  app.service.file:
+    class: AppBundle\Service\FileService
+    parent: ds_entity.service.entity
 
-    app.service.text:
-        class: AppBundle\Service\TextService
-        parent: ds_entity.service.entity
+  app.service.text:
+    class: AppBundle\Service\TextService
+    parent: ds_entity.service.entity
 
-    app.service.page:
-        class: AppBundle\Service\PageService
-        parent: ds_entity.service.entity
+  app.service.page:
+    class: AppBundle\Service\PageService
+    parent: ds_entity.service.entity

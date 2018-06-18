@@ -1,28 +1,28 @@
 services:
-    app.stat.data.count:
-        class: AppBundle\Stat\Data\CountStat
-        arguments:
-            - '@app.service.data'
-        tags:
-            - { name: ds_statistic.stat, alias: data.count }
+  app.stat.data.count:
+    class: AppBundle\Stat\Data\CountStat
+    arguments:
+      - '@app.service.data'
+    tags:
+      - { name: ds_statistic.stat, alias: data.count }
 
-    app.stat.file.count:
-        class: AppBundle\Stat\File\CountStat
-        arguments:
-            - '@app.service.file'
-        tags:
-            - { name: ds_statistic.stat, alias: file.count }
+  app.stat.file.count:
+    class: AppBundle\Stat\File\CountStat
+    arguments:
+      - '@app.service.file'
+    tags:
+      - { name: ds_statistic.stat, alias: file.count }
 
-    app.stat.page.count:
-        class: AppBundle\Stat\Page\CountStat
-        arguments:
-            - '@app.service.page'
-        tags:
-            - { name: ds_statistic.stat, alias: page.count }
+  app.stat.page.count:
+    class: AppBundle\Stat\Page\CountStat
+    arguments:
+      - '@app.service.page'
+    tags:
+      - { name: ds_statistic.stat, alias: page.count }
 
-    app.stat.text.count:
-        class: AppBundle\Stat\Text\CountStat
-        arguments:
-            - '@app.service.text'
-        tags:
-            - { name: ds_statistic.stat, alias: text.count }
+  app.stat.text.count:
+    class: AppBundle\Stat\Text\CountStat
+    arguments:
+      - '@app.service.text'
+    tags:
+      - { name: ds_statistic.stat, alias: text.count }
