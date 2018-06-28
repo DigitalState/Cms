@@ -87,8 +87,8 @@ class Version1_0_0 extends AbstractMigration
             INSERT INTO 
                 ds_parameter (id, key, value, enabled)
             VALUES 
-                (1, \'ds_system.user.username\', \'"system"\', true),
-                (2, \'ds_system.user.password\', \'"password"\', true),
+                (1, \'ds_system.user.username\', \'"'.$data['system']['username'].'"\', true),
+                (2, \'ds_system.user.password\', \'"'.$data['system']['password'].'"\', true),
                 (3, \'ds_tenant.tenant.default\', \'"'.$data['tenant']['uuid'].'"\', true);
         ');
 
@@ -103,7 +103,7 @@ class Version1_0_0 extends AbstractMigration
             INSERT INTO 
                 ds_config (id, uuid, owner, owner_uuid, key, value, enabled, version, tenant, created_at, updated_at)
             VALUES 
-                (1, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.username\', \'"system@system.ds"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                (1, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.username\', \'"'.$data['user']['system']['username'].'"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
                 (2, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.password\', \'"'.$data['user']['system']['password'].'"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
                 (3, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.uuid\', \'"'.$data['user']['system']['uuid'].'"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
                 (4, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.roles\', \'[]\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
