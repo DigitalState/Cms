@@ -1,4 +1,4 @@
-@app @api @entity @data @add
+@api @data @add
 Feature: Add datas
   In order to add datas
   As a system identity

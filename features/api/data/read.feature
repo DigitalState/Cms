@@ -1,4 +1,4 @@
-@app @api @entity @data @read
+@api @data @read
 Feature: Read datas
   In order to read datas
   As a system identity

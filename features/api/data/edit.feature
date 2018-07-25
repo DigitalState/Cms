@@ -1,4 +1,4 @@
-@app @api @entity @data @edit
+@api @data @edit
 Feature: Edit datas
   In order to edit datas
   As a system identity

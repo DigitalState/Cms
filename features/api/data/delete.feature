@@ -1,4 +1,4 @@
-@app @api @entity @data @delete
+@api @data @delete
 Feature: Delete datas
   In order to delete datas
   As a system identity

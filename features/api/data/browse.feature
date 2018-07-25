@@ -1,4 +1,4 @@
-@app @api @entity @data @browse
+@api @data @browse
 Feature: Browse datas
   In order to browse datas
   As a system identity
