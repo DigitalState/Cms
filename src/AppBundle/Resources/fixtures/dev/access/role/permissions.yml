@@ -27,6 +27,7 @@ fixtures:
       - file
       - text
       - page
+      - metadata
     attributes: [EDIT, ADD, DELETE]
 
   - access: 651d52e8-b55f-4325-8264-a33ae7844449 # Manager
@@ -38,6 +39,7 @@ fixtures:
       - file_property
       - text_property
       - page_property
+      - metadata_property
     attributes: [EDIT]
 
   - access: 9e872a74-b1a3-4899-a6fd-1e8023634268 # Staff
@@ -53,6 +55,8 @@ fixtures:
       - text_property
       - page
       - page_property
+      - metadata
+      - metadata_property
       - content
     attributes: [BROWSE, READ]
 
