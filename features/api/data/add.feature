@@ -7,7 +7,7 @@ Feature: Add datas
   Background:
     Given I am authenticated as the "System" identity from the tenant "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
-  @createSchema @loadFixtures
+  @upMigrations @loadFixtures
   Scenario: Add a data
     When I add "Accept" header equal to "application/json"
     And I add "Content-Type" header equal to "application/json"
@@ -65,7 +65,7 @@ Feature: Add datas
     And the JSON node "tenant" should exist
     And the JSON node "tenant" should be equal to "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
-  @dropSchema
+  @downMigrations
   Scenario: Read the added data
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "/datas?id=3"

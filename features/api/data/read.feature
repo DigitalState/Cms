@@ -7,7 +7,7 @@ Feature: Read datas
   Background:
     Given I am authenticated as the "System" identity from the tenant "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
-  @createSchema @loadFixtures @dropSchema
+  @upMigrations @loadFixtures @downMigrations
   Scenario: Read a category
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "/datas/68c28209-cad4-43ac-9f76-fb1791d672da"
