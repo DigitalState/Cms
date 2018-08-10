@@ -7,9 +7,9 @@ parameters:
   database_name: cms
   database_user: cms
   database_password: cms
-  redis_host: cms_redis
-  redis_name: 4
-  redis_prefix: ''
+  cache_host: cms_cache
+  cache_name: 4
+  cache_prefix: ''
   jwt_private_key_path: '%kernel.root_dir%/../var/jwt/key'
   jwt_public_key_path: '%kernel.root_dir%/../var/jwt/key.pub'
   jwt_key_pass_phrase: ''
