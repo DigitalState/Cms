@@ -13,7 +13,8 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 script:
-  - docker-compose build
-  - docker-compose run --rm php composer install --prefer-dist --no-progress --no-suggest --no-interaction
-  - docker-compose run --rm php bin/console security:check
-
+  - docker network create dsproxy_default
+  - docker-compose -f docker-compose.yml -f docker-compose.test.yml build
+  - docker-compose -f docker-compose.yml -f docker-compose.test.yml run --rm php composer install --prefer-dist --no-progress --no-suggest --no-interaction
+#  - docker-compose -f docker-compose.yml -f docker-compose.test.yml run --rm php bin/console security:check
+  - docker-compose -f docker-compose.yml -f docker-compose.test.yml run --rm php vendor/bin/behat

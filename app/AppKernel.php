@@ -14,31 +14,55 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = [
-            new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
-            new Symfony\Bundle\TwigBundle\TwigBundle(),
-            new Symfony\Bundle\MonologBundle\MonologBundle(),
-            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
-            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
-            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new Dunglas\ActionBundle\DunglasActionBundle(),
-            new ApiPlatform\Core\Bridge\Symfony\Bundle\ApiPlatformBundle(),
-            new Nelmio\CorsBundle\NelmioCorsBundle(),
-            new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle(),
-            new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
-            new Ds\Component\Config\Bridge\Symfony\Bundle\DsConfigBundle(),
-            new Ds\Component\Model\Bridge\Symfony\Bundle\DsModelBundle(),
-            new Ds\Component\Security\Bridge\Symfony\Bundle\DsSecurityBundle(),
-            new Ds\Component\Session\Bridge\Symfony\Bundle\DsSessionBundle(),
+            new Symfony\Bundle\FrameworkBundle\FrameworkBundle,
+            new Symfony\Bundle\SecurityBundle\SecurityBundle,
+            new Symfony\Bundle\TwigBundle\TwigBundle,
+            new Symfony\Bundle\MonologBundle\MonologBundle,
+            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle,
+            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle,
+            new Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle,
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle,
+            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle,
+            new Dunglas\ActionBundle\DunglasActionBundle,
+            new ApiPlatform\Core\Bridge\Symfony\Bundle\ApiPlatformBundle,
+            new Nelmio\CorsBundle\NelmioCorsBundle,
+            new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle,
+            new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle,
+//            new Dunglas\DoctrineJsonOdm\Bundle\DunglasDoctrineJsonOdmBundle,
+            new Snc\RedisBundle\SncRedisBundle,
+            new Ds\Component\Api\DsApiBundle,
+            new Ds\Component\Cache\DsCacheBundle,
+            new Ds\Component\Config\DsConfigBundle,
+            new Ds\Component\Container\DsContainerBundle,
+            new Ds\Component\Discovery\DsDiscoveryBundle,
+            new Ds\Component\Entity\DsEntityBundle,
+            new Ds\Component\Health\DsHealthBundle,
+            new Ds\Component\Identity\DsIdentityBundle,
+            new Ds\Component\Locale\DsLocaleBundle,
+            new Ds\Component\Log\DsLogBundle,
+            new Ds\Component\Metadata\DsMetadataBundle,
+            new Ds\Component\Resolver\DsResolverBundle,
+            new Ds\Component\Security\DsSecurityBundle,
+            new Ds\Component\Session\DsSessionBundle,
+            new Ds\Component\Statistic\DsStatisticBundle,
+            new Ds\Component\System\DsSystemBundle,
+            new Ds\Component\Tenant\DsTenantBundle,
+            new Ds\Component\Translation\DsTranslationBundle,
+            new AppBundle\AppBundle,
         ];
 
+        if (in_array($this->getEnvironment(), ['prod'], true)) {
+            $bundles[] = new Ds\Component\Exception\DsExceptionBundle;
+        }
+
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
-            $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
-            $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
-            $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
-            $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
-            $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
+            $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle;
+            $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle;
+            $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle;
+            $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle;
+            $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle;
+            $bundles[] = new Ds\Component\Debug\DsDebugBundle;
+            $bundles[] = new Ds\Component\Identity\Test\DsIdentityTestBundle;
         }
 
         return $bundles;

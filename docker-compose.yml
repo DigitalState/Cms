@@ -1,45 +1,62 @@
-version: '2.1'
-
-volumes:
-  db_data:
-    driver: 'local'
+version: '3.1'
 
 services:
-  db:
-    image: 'mysql:5.7'
-    ports:
-      - '9056:3306'
+  database:
+    image: postgres:9.6-alpine
     environment:
-      MYSQL_DATABASE: 'api_platform'
-      MYSQL_USER: 'api_platform'
-      MYSQL_PASSWORD: 'api_platform'
-      MYSQL_RANDOM_ROOT_PASSWORD: 'true'
+      POSTGRES_DB: '${DATABASE_NAME}'
+      POSTGRES_USER: '${DATABASE_USERNAME}'
+      POSTGRES_PASSWORD: '${DATABASE_PASSWORD}'
+      SERVICE_IGNORE: 'true'
     volumes:
-      - 'db_data:/var/lib/mysql'
-    healthcheck:
-      test: ['CMD-SHELL', 'mysql --user=api_platform --password=api_platform -e "SHOW TABLES" api_platform']
-      interval: '5s'
-      timeout: '1s'
-      retries: 10
+      - database_data:/var/lib/postgresql/data:rw
+
+  cache:
+    image: redis:4.0.8-alpine
+    environment:
+      ALLOW_EMPTY_PASSWORD: 'yes'
+      SERVICE_IGNORE: 'true'
+    volumes:
+      - cache_data:/data:rw
 
   php:
-    build: '.'
+    build: .
     depends_on:
-      db:
-        condition: 'service_healthy'
+      - database
     environment:
-      SYMFONY_ENV: 'dev'
+      SERVICE_IGNORE: 'true'
+    command: ['wait-for', 'cms_database:${DATABASE_PORT}', '--timeout=60', '--', 'docker-app-start']
     volumes:
-      - './:/srv/api-platform'
+      - '${DIRECTORY}:/srv/api-platform'
+    links:
+      - database:cms_database
+      - cache:cms_cache
 
-  nginx:
-    image: 'nginx:1.11-alpine'
+  api:
+    image: nginx:1.11-alpine
     depends_on:
-      php:
-        condition: 'service_started'
-    ports:
-      - '8056:80'
-    volumes_from:
       - php
+    environment:
+      SERVICE_443_ID: '${COMPOSE_PROJECT_NAME}_api_443'
+      SERVICE_443_NAME: '${COMPOSE_PROJECT_NAME}_api_443'
+      SERVICE_443_TAGS: 'proxy.enable=true,proxy.tags=external,proxy.frontend.entryPoints=https,proxy.frontend.rule=Host:${API_HOST}'
+      SERVICE_80_ID: '${COMPOSE_PROJECT_NAME}_api_80'
+      SERVICE_80_NAME: '${COMPOSE_PROJECT_NAME}_api_80'
+      SERVICE_80_TAGS: 'proxy.enable=true,proxy.tags=external,proxy.frontend.entryPoints=http,proxy.frontend.rule=Host:${API_HOST}'
     volumes:
-      - './docker/nginx/conf.d:/etc/nginx/conf.d:ro'
+      - '${DIRECTORY}/docker/nginx/conf.d:/etc/nginx/conf.d:ro'
+      - '${DIRECTORY}:/srv/api-platform'
+    links:
+      - php:cms_php
+
+volumes:
+  database_data:
+    driver: local
+
+  cache_data:
+    driver: local
+
+networks:
+  default:
+    external:
+      name: '${NETWORK}'
