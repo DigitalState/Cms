@@ -4,14 +4,19 @@ namespace AppBundle\Migrations;
 
 use Doctrine\DBAL\Migrations\AbstractMigration;
 use Doctrine\DBAL\Schema\Schema;
+use Ds\Component\Container\Attribute;
 use Ramsey\Uuid\Uuid;
+use stdClass;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\Yaml\Yaml;
 
 /**
  * Class Version1_0_0
  */
-class Version1_0_0 extends AbstractMigration
+class Version1_0_0 extends AbstractMigration implements ContainerAwareInterface
 {
+    use Attribute\Container;
+
     /**
      * Up
      *
@@ -20,6 +25,7 @@ class Version1_0_0 extends AbstractMigration
     public function up(Schema $schema)
     {
         $platform = $this->connection->getDatabasePlatform()->getName();
+        $cipherService = $this->container->get('ds_encryption.service.cipher');
 
         switch ($platform) {
             case 'postgresql':
@@ -39,10 +45,10 @@ class Version1_0_0 extends AbstractMigration
                 $this->addSql('CREATE SEQUENCE app_page_trans_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
                 $this->addSql('CREATE SEQUENCE app_text_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
                 $this->addSql('CREATE SEQUENCE app_text_trans_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-                $this->addSql('CREATE TABLE ds_config (id INT NOT NULL, uuid UUID NOT NULL, "owner" VARCHAR(255) DEFAULT NULL, owner_uuid UUID DEFAULT NULL, "key" VARCHAR(255) NOT NULL, value JSON DEFAULT NULL, enabled BOOLEAN NOT NULL, version INT DEFAULT 1 NOT NULL, tenant UUID NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
+                $this->addSql('CREATE TABLE ds_config (id INT NOT NULL, uuid UUID NOT NULL, "owner" VARCHAR(255) DEFAULT NULL, owner_uuid UUID DEFAULT NULL, "key" VARCHAR(255) NOT NULL, value JSON DEFAULT NULL, encrypted BOOLEAN NOT NULL, enabled BOOLEAN NOT NULL, version INT DEFAULT 1 NOT NULL, tenant UUID NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
                 $this->addSql('CREATE UNIQUE INDEX UNIQ_758C45F4D17F50A6 ON ds_config (uuid)');
                 $this->addSql('CREATE UNIQUE INDEX UNIQ_758C45F48A90ABA94E59C462 ON ds_config (key, tenant)');
-                $this->addSql('CREATE TABLE ds_parameter (id INT NOT NULL, "key" VARCHAR(255) NOT NULL, value JSON DEFAULT NULL, enabled BOOLEAN NOT NULL, PRIMARY KEY(id))');
+                $this->addSql('CREATE TABLE ds_parameter (id INT NOT NULL, "key" VARCHAR(255) NOT NULL, value JSON DEFAULT NULL, encrypted BOOLEAN NOT NULL, enabled BOOLEAN NOT NULL, PRIMARY KEY(id))');
                 $this->addSql('CREATE UNIQUE INDEX UNIQ_B3C0FD91F48571EB ON ds_parameter ("key")');
                 $this->addSql('CREATE TABLE ds_metadata (id INT NOT NULL, uuid UUID NOT NULL, "owner" VARCHAR(255) DEFAULT NULL, owner_uuid UUID DEFAULT NULL, slug VARCHAR(255) NOT NULL, type VARCHAR(255) DEFAULT NULL, data JSON NOT NULL, version INT DEFAULT 1 NOT NULL, tenant UUID NOT NULL, deleted_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
                 $this->addSql('CREATE UNIQUE INDEX UNIQ_11290F17D17F50A6 ON ds_metadata (uuid)');
@@ -96,32 +102,32 @@ class Version1_0_0 extends AbstractMigration
 
                 $this->addSql('
                     INSERT INTO 
-                        ds_parameter (id, key, value, enabled)
+                        ds_parameter (id, key, value, encrypted, enabled)
                     VALUES 
-                        (1, \'ds_system.user.username\', \'"'.$data['system']['username'].'"\', true),
-                        (2, \'ds_system.user.password\', \'"'.$data['system']['password'].'"\', true),
-                        (3, \'ds_tenant.tenant.default\', \'"'.$data['tenant']['uuid'].'"\', true);
+                        (1, \'ds_system.user.username\', \'"'.$data['system']['username'].'"\', false, true),
+                        (2, \'ds_system.user.password\', \'"'.$cipherService->encrypt($data['system']['password']).'"\', true, true),
+                        (3, \'ds_tenant.tenant.default\', \'"'.$data['tenant']['uuid'].'"\', false, true);
                 ');
 
                 $this->addSql('
                     INSERT INTO 
                         ds_tenant (id, uuid, data, created_at, updated_at)
                     VALUES 
-                        (1, \''.$data['tenant']['uuid'].'\', \'{}\', now(), now());
+                        (1, \''.$data['tenant']['uuid'].'\', \'"'.$cipherService->encrypt(new stdClass).'"\', now(), now());
                 ');
 
                 $this->addSql('
                     INSERT INTO 
-                        ds_config (id, uuid, owner, owner_uuid, key, value, enabled, version, tenant, created_at, updated_at)
+                        ds_config (id, uuid, owner, owner_uuid, key, value, encrypted, enabled, version, tenant, created_at, updated_at)
                     VALUES 
-                        (1, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.username\', \'"'.$data['user']['system']['username'].'"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (2, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.password\', \'"'.$data['user']['system']['password'].'"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (3, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.uuid\', \'"'.$data['user']['system']['uuid'].'"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (4, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.roles\', \'[]\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (5, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.identity.roles\', \'[]\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (6, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.identity.type\', \'"System"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (7, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.identity.uuid\', \'"'.$data['identity']['system']['uuid'].'"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (8, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.tenant\', \'"'.$data['tenant']['uuid'].'"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now());
+                        (1, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.username\', \'"'.$data['user']['system']['username'].'"\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (2, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.password\', \'"'.$cipherService->encrypt($data['user']['system']['password']).'"\', true, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (3, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.uuid\', \'"'.$data['user']['system']['uuid'].'"\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (4, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.roles\', \'[]\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (5, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.identity.roles\', \'[]\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (6, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.identity.type\', \'"System"\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (7, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.identity.uuid\', \'"'.$data['identity']['system']['uuid'].'"\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (8, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.tenant\', \'"'.$data['tenant']['uuid'].'"\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now());
                 ');
 
                 $this->addSql('
