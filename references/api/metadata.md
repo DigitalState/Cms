@@ -20,6 +20,13 @@ This endpoint returns the list of metadata resources.
 
 GET `/metadatas`
 
+### Headers
+
+| Name | Type | Description | Example |
+| :--- | :--- | :---------- | :------ |
+| Accept | string | The accepted returned content types. __Optional.__ Default: `application/ld+json`. Options: `application/json`, `application/ld+json`. | `Accept: application/json` |
+| Authorization | string | The JWT token. __Required.__ | `Authorization: eyJhbGciOi.eyJyb2xlcy[...].Ds34hb80Mf[...]` |
+
 ### Parameters
 
 #### Query Parameters
@@ -58,7 +65,7 @@ The request was successful and returns a JSON array of objects. Each object cont
 | id | integer | The metadata resource id. |
 | uuid | string | The metadata resource uuid. |
 | createdAt | string | The date the metadata resource was created on. |
-| updatedAt | string | The date the metadata resource was update at. |
+| updatedAt | string | The date the metadata resource was updated at. |
 | owner | string | The metadata resource owner. |
 | ownerUuid | string | The metadata resource owner uuid. |
 | title | object | The metadata resource title. |
@@ -123,6 +130,13 @@ This endpoint returns a specific metadata resource.
 
 GET `/metadatas/{uuid}`
 
+### Headers
+
+| Name | Type | Description | Example |
+| :--- | :--- | :---------- | :------ |
+| Accept | string | The accepted returned content types. __Optional.__ Default: `application/ld+json`. Options: `application/json`, `application/ld+json`. | `Accept: application/json` |
+| Authorization | string | The JWT token. __Required.__ | `Authorization: eyJhbGciOi.eyJyb2xlcy[...].Ds34hb80Mf[...]` |
+
 ### Parameters
 
 #### Path Parameters
@@ -142,7 +156,7 @@ The request was successful and returns a JSON object that contains the following
 | id | integer | The metadata resource id. |
 | uuid | string | The metadata resource uuid. |
 | createdAt | string | The date the metadata resource was created on. |
-| updatedAt | string | The date the metadata resource was update at. |
+| updatedAt | string | The date the metadata resource was updated at. |
 | owner | string | The metadata resource owner. |
 | ownerUuid | string | The metadata resource owner uuid. |
 | title | object | The metadata resource title. |
@@ -215,6 +229,14 @@ This endpoint adds an metadata resource to the list.
 
 POST `/metadatas`
 
+### Headers
+
+| Name | Type | Description | Example |
+| :--- | :--- | :---------- | :------ |
+| Content-Type | string | The accepted returned content types. Options: `application/json`. | `Content-Type: application/json` |
+| Accept | string | The accepted returned content types. __Optional.__ Default: `application/ld+json`. Options: `application/json`, `application/ld+json`. | `Accept: application/json` |
+| Authorization | string | The JWT token. __Required.__ | `Authorization: eyJhbGciOi.eyJyb2xlcy[...].Ds34hb80Mf[...]` |
+
 ### Parameters
 
 #### Body
@@ -274,6 +296,7 @@ __POST__ `/metadatas`
 *Headers:*
 
 ```yaml
+Content-Type: application/json
 Accept: application/json
 ```
 
@@ -335,6 +358,14 @@ This endpoint edits a specific metadata resource.
 ### Method
 
 PUT `/metadatas/{uuid}`
+
+### Headers
+
+| Name | Type | Description | Example |
+| :--- | :--- | :---------- | :------ |
+| Content-Type | string | The accepted returned content types. Options: `application/json`. | `Content-Type: application/json` |
+| Accept | string | The accepted returned content types. __Optional.__ Default: `application/ld+json`. Options: `application/json`, `application/ld+json`. | `Accept: application/json` |
+| Authorization | string | The JWT token. __Required.__ | `Authorization: eyJhbGciOi.eyJyb2xlcy[...].Ds34hb80Mf[...]` |
 
 ### Parameters
 
@@ -401,6 +432,7 @@ __PUT__ `/metadatas/941b9d4e-d0e5-41df-a62e-97db05559dac`
 *Headers:*
 
 ```yaml
+Content-Type: application/json
 Accept: application/json
 ```
 
@@ -458,6 +490,12 @@ This endpoint deletes a specific metadata resource from the list.
 
 DELETE `/metadatas/{uuid}`
 
+### Headers
+
+| Name | Type | Description | Example |
+| :--- | :--- | :---------- | :------ |
+| Authorization | string | The JWT token. __Required.__ | `Authorization: eyJhbGciOi.eyJyb2xlcy[...].Ds34hb80Mf[...]` |
+
 ### Parameters
 
 #### Path Parameters
@@ -491,4 +529,3 @@ __DELETE__ `/metadatas/941b9d4e-d0e5-41df-a62e-97db05559dac`
 ```
 
 ```
-
