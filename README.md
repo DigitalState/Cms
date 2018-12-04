@@ -1,6 +1,6 @@
 # Cms
 
-Description...
+The DigitalState Cms Microservice
 
 [![Build Status](https://travis-ci.org/DigitalState/Cms.svg?branch=develop)](https://travis-ci.org/DigitalState/Cms)
 [![Coverage Status](https://coveralls.io/repos/github/DigitalState/Cms/badge.svg?branch=develop)](https://coveralls.io/github/DigitalState/Cms?branch=develop)
@@ -20,10 +20,10 @@ Further documentation can be found in the [Documentation Repository](https://git
 
 ## References
 
-- [Api](references/api.md)
-- [Configurations](references/configurations.md)
-- [Permissions](references/permissions.md)
-- [Docker](references/docker.md)
+- [Api](reference/api.md)
+- [Configurations](reference/configurations.md)
+- [Permissions](reference/permissions.md)
+- [Docker](reference/docker.md)
 
 ## Contributing
 
