@@ -1,0 +1,39 @@
+objects:
+  - access: 3f41f058-3d9c-49b4-ab93-2c43b451c7f7 # Anonymous
+    scope: owner
+    entity: BusinessUnit
+    entity_uuid: b20a40d9-b95b-4462-b8f1-c7453b9b7067 # Portal
+    key:
+      - data
+      - data_uuid
+      - data_slug
+      - data_title
+      - data_data
+      - file
+      - file_uuid
+      - file_slug
+      - file_title
+      - file_description
+      - file_presentation
+      - file_type
+      - text
+      - text_uuid
+      - text_slug
+      - text_title
+      - text_value
+      - page
+      - page_uuid
+      - page_slug
+      - page_title
+      - page_description
+      - content
+    attributes: [BROWSE, READ]
+
+prototype:
+  access: ~
+  scope: ~
+  entity: ~
+  entity_uuid: ~
+  key: ~
+  attributes: []
+  tenant: e5a2120d-6bf7-4c58-a900-bac1e55e986b # Tenant 1
