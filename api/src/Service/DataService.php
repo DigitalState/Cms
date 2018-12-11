@@ -17,7 +17,7 @@ final class DataService extends EntityService
      * @param \Doctrine\ORM\EntityManagerInterface $manager
      * @param string $entity
      */
-    public function __construct(EntityManagerInterface $manager, $entity = Data::class)
+    public function __construct(EntityManagerInterface $manager, string $entity = Data::class)
     {
         parent::__construct($manager, $entity);
     }

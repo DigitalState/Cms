@@ -17,7 +17,7 @@ final class FileService extends EntityService
      * @param \Doctrine\ORM\EntityManagerInterface $manager
      * @param string $entity
      */
-    public function __construct(EntityManagerInterface $manager, $entity = File::class)
+    public function __construct(EntityManagerInterface $manager, string $entity = File::class)
     {
         parent::__construct($manager, $entity);
     }

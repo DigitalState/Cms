@@ -17,7 +17,7 @@ final class TextService extends EntityService
      * @param \Doctrine\ORM\EntityManagerInterface $manager
      * @param string $entity
      */
-    public function __construct(EntityManagerInterface $manager, $entity = Text::class)
+    public function __construct(EntityManagerInterface $manager, string $entity = Text::class)
     {
         parent::__construct($manager, $entity);
     }

@@ -17,7 +17,7 @@ final class PageService extends EntityService
      * @param \Doctrine\ORM\EntityManagerInterface $manager
      * @param string $entity
      */
-    public function __construct(EntityManagerInterface $manager, $entity = Page::class)
+    public function __construct(EntityManagerInterface $manager, string $entity = Page::class)
     {
         parent::__construct($manager, $entity);
     }
