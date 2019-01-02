@@ -1,0 +1,2 @@
+ds_discovery:
+  host: cms_mock_discovery:8080
