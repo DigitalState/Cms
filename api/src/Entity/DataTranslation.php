@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Ds\Component\Model\Attribute\Accessor;
+use Ds\Component\Translation\Model\Type\Translation;
 use Knp\DoctrineBehaviors\Model as Behavior;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -13,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="app_data_trans")
  */
-class DataTranslation
+class DataTranslation implements Translation
 {
     use Behavior\Translatable\Translation;
 
