@@ -1,4 +1,35 @@
-objects: []
+objects:
+  - uuid: 176f6585-1420-49e0-a84c-9c84438fdbb4
+    owner: BusinessUnit
+    owner_uuid: 325e1004-8516-4ca9-a4d3-d7505bd9a7fe # Administration
+    title:
+      en: Acl Scopes
+      fr: Portée acl
+    slug: acl-scopes
+    type: acl
+    data:
+      generic: Generic
+      object: Object
+      identity: Identity
+      owner: Owner
+      session: Session
+    tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
+
+  - uuid: 20191de6-beac-4977-b6b4-96f7e79d6a6d
+    owner: BusinessUnit
+    owner_uuid: 72ecd949-6960-4d9d-8baa-3dc15c2cbd63 # Administration
+    title:
+      en: Acl Scopes
+      fr: Portée acl
+    slug: acl-scopes
+    type: acl
+    data:
+      generic: Generic
+      object: Object
+      identity: Identity
+      owner: Owner
+      session: Session
+    tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
 
 prototype:
   uuid: ~
