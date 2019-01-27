@@ -1,4 +1,47 @@
-objects: []
+objects:
+  - uuid: f49010ee-d588-4b2b-9dba-c4c704b4d02c
+    owner_uuid: e51aea66-ba28-4718-9644-e5fc35ad7a45 # Portal
+    slug: portal-title
+    title:
+      en: Portal Title
+      fr: Titre du portail
+    value:
+      en: Merrimill
+      fr: Merrimill
+    tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
+
+  - uuid: 314f82b9-09d0-4760-9d3a-c3eefd5fc7d2
+    owner_uuid: e51aea66-ba28-4718-9644-e5fc35ad7a45 # Portal
+    slug: portal-description
+    title:
+      en: Portal Description
+      fr: Description du portail
+    value:
+      en: Merrimill Public Services
+      fr: Services publics Merrimill
+    tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
+
+  - uuid: f6ffcd09-ebbc-4b7d-9ec4-e03428000c4a
+    owner_uuid: 4105c4be-82fa-4612-95c2-1043c6633924 # Portal
+    slug: portal-title
+    title:
+      en: Portal Title
+      fr: Titre du portail
+    value:
+      en: Flowerfield
+      fr: Flowerfield
+    tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
+
+  - uuid: 8053c4bd-b2d8-4b59-8d3a-2ef266519c4c
+    owner_uuid: 4105c4be-82fa-4612-95c2-1043c6633924 # Portal
+    slug: portal-description
+    title:
+      en: Portal Description
+      fr: Description du portail
+    value:
+      en: Flowerfield Public Services
+      fr: Services publics Flowerfield
+    tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
 
 prototype:
   uuid: ~
