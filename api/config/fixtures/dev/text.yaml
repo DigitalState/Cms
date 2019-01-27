@@ -1,23 +1,23 @@
 objects:
   - uuid: f33ca03e-f177-4589-a9c2-632b90696d5e
-    owner_uuid: c11c546e-bd01-47cf-97da-e25388357b5a # Administration
-    slug: admin-title
+    owner_uuid: b20a40d9-b95b-4462-b8f1-c7453b9b7067 # Portal
+    slug: portal-title
     title:
-      en: Admin Title
-      fr: Titre de l'administration
+      en: Portal Title
+      fr: Titre du portail
     value:
-      en: DigitalState
-      fr: DigitalState
+      en: Merrimill
+      fr: Merrimill
 
   - uuid: c79a584e-eb42-48d8-8784-4ab60927fc64
-    owner_uuid: c11c546e-bd01-47cf-97da-e25388357b5a # Administration
-    slug: admin-description
+    owner_uuid: b20a40d9-b95b-4462-b8f1-c7453b9b7067 # Portal
+    slug: portal-description
     title:
-      en: Admin Description
-      fr: Description de l'administration
+      en: Portal Description
+      fr: Description du portail
     value:
-      en: Digital Public Services Platform
-      fr: Plate-forme de services publics numériques
+      en: Merrimill Public Services
+      fr: Services publics Merrimill
 
 prototype:
   uuid: ~
