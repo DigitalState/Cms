@@ -39,7 +39,7 @@ Feature: Deny access to non-authenticated users to metadata endpoints
 
   Scenario: Delete a metadata
     When I add "Accept" header equal to "application/json"
-    And I send a "DELETE" request to "/metadata/c61f05ce-468f-4b21-ad38-512ea549e210"
+    And I send a "DELETE" request to "/metadata/176f6585-1420-49e0-a84c-9c84438fdbb4"
     Then the response status code should be 401
     And the header "Content-Type" should be equal to "application/json"
     And the response should be in JSON
