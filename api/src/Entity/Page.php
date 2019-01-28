@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Ds\Component\Locale\Model\Type\Localizable;
 use Ds\Component\Model\Attribute\Accessor;
+use Ds\Component\Model\Type\Deletable;
 use Ds\Component\Model\Type\Identifiable;
 use Ds\Component\Model\Type\Ownable;
 use Ds\Component\Model\Type\Sluggable;
@@ -54,7 +55,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORMAssert\UniqueEntity(fields="uuid")
  * @ORMAssert\UniqueEntity(fields={"slug", "tenant"})
  */
-class Page implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translatable, Localizable, Versionable, Tenantable
+class Page implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translatable, Localizable, Deletable, Versionable, Tenantable
 {
     use Behavior\Translatable\Translatable;
     use Behavior\Timestampable\Timestampable;
@@ -67,6 +68,7 @@ class Page implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translat
     use Accessor\OwnerUuid;
     use TranslationAccessor\Title;
     use TranslationAccessor\Description;
+    use Accessor\Deleted;
     use Accessor\Version;
     use TenantAccessor\Tenant;
 
