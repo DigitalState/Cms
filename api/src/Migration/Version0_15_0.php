@@ -113,7 +113,7 @@ final class Version0_15_0 extends AbstractMigration implements ContainerAwareInt
                 $this->addSql('CREATE TABLE app_text (id INT NOT NULL, uuid UUID NOT NULL, "owner" VARCHAR(255) DEFAULT NULL, owner_uuid UUID DEFAULT NULL, slug VARCHAR(255) NOT NULL, version INT DEFAULT 1 NOT NULL, tenant UUID NOT NULL, deleted_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
                 $this->addSql('CREATE UNIQUE INDEX UNIQ_3EA58267D17F50A6 ON app_text (uuid)');
                 $this->addSql('CREATE UNIQUE INDEX UNIQ_3EA58267989D9B624E59C462 ON app_text (slug, tenant)');
-                $this->addSql('CREATE TABLE app_text_trans (id INT NOT NULL, translatable_id INT DEFAULT NULL, title VARCHAR(255) DEFAULT NULL, value VARCHAR(255) DEFAULT NULL, locale VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
+                $this->addSql('CREATE TABLE app_text_trans (id INT NOT NULL, translatable_id INT DEFAULT NULL, title VARCHAR(255) DEFAULT NULL, value TEXT DEFAULT NULL, locale VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
                 $this->addSql('CREATE INDEX IDX_708E0F9C2C2AC5D3 ON app_text_trans (translatable_id)');
                 $this->addSql('CREATE UNIQUE INDEX app_text_trans_unique_translation ON app_text_trans (translatable_id, locale)');
                 $this->addSql('ALTER TABLE app_data_trans ADD CONSTRAINT FK_6885795E2C2AC5D3 FOREIGN KEY (translatable_id) REFERENCES app_data (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
