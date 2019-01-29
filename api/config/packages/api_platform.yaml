@@ -36,7 +36,7 @@ services:
   app.filter.data.search_translation:
     parent: ds_translation.doctrine.orm.filter.search
     arguments:
-      - title: partial
+      - title: ipartial
     tags:
       - { name: api_platform.filter, id: app.data.search_translation }
 
@@ -75,7 +75,7 @@ services:
   app.filter.file.search_translation:
     parent: ds_translation.doctrine.orm.filter.search
     arguments:
-      - title: partial
+      - title: ipartial
     tags:
       - { name: api_platform.filter, id: app.file.search_translation }
 
@@ -113,7 +113,7 @@ services:
   app.filter.text.search_translation:
     parent: ds_translation.doctrine.orm.filter.search
     arguments:
-      - title: partial
+      - title: ipartial
     tags:
       - { name: api_platform.filter, id: app.text.search_translation }
 
@@ -151,7 +151,7 @@ services:
   app.filter.page.search_translation:
     parent: ds_translation.doctrine.orm.filter.search
     arguments:
-      - title: partial
+      - title: ipartial
     tags:
       - { name: api_platform.filter, id: app.page.search_translation }
 
