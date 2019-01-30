@@ -1,0 +1,79 @@
+parameters:
+  locale: en
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  App\:
+    resource: ../src/{Controller,Fixture,Repository,Service,Stat,Tenant}
+
+  App\Controller\:
+    resource: ../src/Controller
+    tags: [controller.service_arguments]
+
+  App\Fixture\:
+    resource: ../src/Fixture
+    tags: [doctrine.fixture.orm]
+
+  App\Repository\DataRepository:
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - App\Entity\Data
+
+  App\Repository\FileRepository:
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - App\Entity\File
+
+  App\Repository\PageRepository:
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - App\Entity\Page
+
+  App\Repository\TextRepository:
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - App\Entity\Text
+
+  App\Stat\Data\CountStat:
+    tags:
+      - { name: ds_statistic.stat, alias: data.count }
+
+  App\Stat\File\CountStat:
+    tags:
+      - { name: ds_statistic.stat, alias: file.count }
+
+  App\Stat\Page\CountStat:
+    tags:
+      - { name: ds_statistic.stat, alias: page.count }
+
+  App\Stat\Text\CountStat:
+    tags:
+      - { name: ds_statistic.stat, alias: text.count }
+
+  App\Tenant\Loader\AclLoader:
+    tags:
+      - { name: ds_tenant.loader }
+
+  App\Tenant\Loader\ConfigLoader:
+    tags:
+      - { name: ds_tenant.loader }
+
+  App\Tenant\Unloader\DataUnloader:
+    tags:
+      - { name: ds_tenant.unloader }
+
+  App\Tenant\Unloader\FileUnloader:
+    tags:
+      - { name: ds_tenant.unloader }
+
+  App\Tenant\Unloader\PageUnloader:
+    tags:
+      - { name: ds_tenant.unloader }
+
+  App\Tenant\Unloader\TextUnloader:
+    tags:
+      - { name: ds_tenant.unloader }
