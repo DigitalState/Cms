@@ -8,6 +8,7 @@
 - Feature [Tests] Add wider range of behat tests
 - Feature [Api] Rename pagination query parameters to `_page` and `_limit`
 - Feature [Config] Config api filter `key` changed from `partial` to `exact` strategy
+- Feature [Api] Data urls changed from `/datas` to `/data`
 
 ## 0.14.0 (2018-10-29)
 
