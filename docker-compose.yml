@@ -15,10 +15,7 @@ services:
           - cms_database
 
   php:
-    image: digitalstate/cms-php
-    build:
-      context: ./api
-      target: api_platform_php
+    image: digitalstate/cms:php-0.16.0
     depends_on:
       - database
     env_file:
@@ -44,10 +41,7 @@ services:
           - cms_php
 
   api:
-    image: digitalstate/cms-api
-    build:
-      context: ./api
-      target: api_platform_nginx
+    image: digitalstate/cms:api-0.16.0
     depends_on:
       - php
     networks:
