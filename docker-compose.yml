@@ -15,7 +15,7 @@ services:
           - cms_database
 
   php:
-    image: digitalstate/cms:php-0.16.3
+    image: digitalstate/cms:php-0.16.4
     depends_on:
       - database
     env_file:
@@ -41,7 +41,7 @@ services:
           - cms_php
 
   api:
-    image: digitalstate/cms:api-0.16.3
+    image: digitalstate/cms:api-0.16.4
     depends_on:
       - php
     networks:
