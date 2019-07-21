@@ -43,7 +43,7 @@ class PageTranslation implements Translation
 
     /**
      * @var string
-     * @ORM\Column(name="data", type="json_array")
+     * @ORM\Column(name="data", type="json_array", options={"default":"{}"})
      */
     private $data;
 
