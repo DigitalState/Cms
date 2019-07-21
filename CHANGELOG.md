@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.17.1 (2019-07-21)
+
+- Feature [Entity] Add presentation and data properties to page entity
+
 ## 0.17.0 (2019-07-14)
 
 - Feature [Core] Upgrade digitalstate/core dependency to 0.17.0
