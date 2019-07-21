@@ -47,6 +47,8 @@ ds_acl:
     page_slug:         { attributes: [BROWSE, READ, EDIT],              property: App\Entity\Page.slug,         title: app.permissions.page.slug         }
     page_title:        { attributes: [BROWSE, READ, EDIT],              property: App\Entity\Page.title,        title: app.permissions.page.title        }
     page_description:  { attributes: [BROWSE, READ, EDIT],              property: App\Entity\Page.description,  title: app.permissions.page.description  }
+    page_presentation: { attributes: [BROWSE, READ, EDIT],              property: App\Entity\Page.presentation, title: app.permissions.page.presentation }
+    page_data:         { attributes: [BROWSE, READ, EDIT],              property: App\Entity\Page.data,         title: app.permissions.page.data         }
     page_version:      { attributes: [BROWSE, READ, EDIT],              property: App\Entity\Page.version,      title: app.permissions.page.version      }
     page_tenant:       { attributes: [BROWSE, READ, EDIT],              property: App\Entity\Page.tenant,       title: app.permissions.page.tenant       }
     text:              { attributes: [BROWSE, READ, EDIT, ADD, DELETE], entity:   App\Entity\Text,              title: app.permissions.text              }

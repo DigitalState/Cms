@@ -68,6 +68,8 @@ class Page implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translat
     use Accessor\OwnerUuid;
     use TranslationAccessor\Title;
     use TranslationAccessor\Description;
+    use TranslationAccessor\Presentation;
+    use TranslationAccessor\Data;
     use Accessor\Deleted;
     use Accessor\Version;
     use TenantAccessor\Tenant;
@@ -173,6 +175,32 @@ class Page implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translat
     private $description;
 
     /**
+     * @var array
+     * @ApiProperty
+     * @Serializer\Groups({"page_output", "page_input"})
+     * @Assert\Type("array")
+     * @Assert\NotBlank
+     * @Assert\All({
+     *     @Assert\NotBlank,
+     *     @Assert\Length(min=1)
+     * })
+     * @Locale
+     * @Translate
+     */
+    private $presentation;
+
+    /**
+     * @var array
+     * @ApiProperty
+     * @Serializer\Groups({"page_output", "page_input"})
+     * @Assert\Type("array")
+     * @Assert\NotBlank
+     * @Locale
+     * @Translate
+     */
+    private $data;
+
+    /**
      * @var integer
      * @ApiProperty
      * @Serializer\Groups({"page_output", "page_input"})
@@ -199,5 +227,7 @@ class Page implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translat
     {
         $this->title = [];
         $this->description = [];
+        $this->presentation = [];
+        $this->data = [];
     }
 }

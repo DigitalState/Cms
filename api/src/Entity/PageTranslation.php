@@ -20,6 +20,8 @@ class PageTranslation implements Translation
 
     use Accessor\Title;
     use Accessor\Description;
+    use Accessor\Presentation;
+    use Accessor\Data;
 
     /**
      * @var string
@@ -32,4 +34,24 @@ class PageTranslation implements Translation
      * @ORM\Column(name="description", type="string", length=255, nullable=true)
      */
     private $description;
+
+    /**
+     * @var string
+     * @ORM\Column(name="presentation", type="text", nullable=true)
+     */
+    private $presentation;
+
+    /**
+     * @var string
+     * @ORM\Column(name="data", type="json_array", options={"default":"{}"})
+     */
+    private $data;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->data = [];
+    }
 }
