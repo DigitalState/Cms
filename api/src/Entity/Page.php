@@ -95,8 +95,9 @@ class Page implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translat
 
     /**
      * @var \DateTime
-     * @ApiProperty(writable=false)
-     * @Serializer\Groups({"page_output"})
+     * @ApiProperty
+     * @Serializer\Groups({"page_output", "page_input"})
+     * @Assert\DateTime
      */
     protected $createdAt;
 

@@ -94,8 +94,9 @@ class File implements Identifiable, Uuidentifiable, Ownable, Translatable, Local
 
     /**
      * @var \DateTime
-     * @ApiProperty(writable=false)
-     * @Serializer\Groups({"file_output"})
+     * @ApiProperty
+     * @Serializer\Groups({"file_output", "file_input"})
+     * @Assert\DateTime
      */
     protected $createdAt;
 

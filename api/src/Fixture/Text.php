@@ -3,6 +3,7 @@
 namespace App\Fixture;
 
 use App\Entity\Text as TextEntity;
+use DateTime;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ds\Component\Database\Fixture\Yaml;
 
@@ -35,6 +36,13 @@ trait Text
                 ->setTitle((array) $object->title)
                 ->setValue((array) $object->value)
                 ->setTenant($object->tenant);
+
+            if (null !== $object->created_at) {
+                $date = new DateTime;
+                $date->setTimestamp($object->created_at);
+                $text->setCreatedAt($date);
+            }
+
             $manager->persist($text);
             $manager->flush();
         }
