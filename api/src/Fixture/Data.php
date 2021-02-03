@@ -3,6 +3,7 @@
 namespace App\Fixture;
 
 use App\Entity\Data as DataEntity;
+use DateTime;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ds\Component\Database\Fixture\Yaml;
 
@@ -35,6 +36,13 @@ trait Data
                 ->setTitle((array) $object->title)
                 ->setData(json_decode(json_encode($object->data), true))
                 ->setTenant($object->tenant);
+
+            if (null !== $object->created_at) {
+                $date = new DateTime;
+                $date->setTimestamp($object->created_at);
+                $data->setCreatedAt($date);
+            }
+
             $manager->persist($data);
             $manager->flush();
         }

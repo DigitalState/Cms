@@ -93,8 +93,9 @@ class Text implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translat
 
     /**
      * @var \DateTime
-     * @ApiProperty(writable=false)
-     * @Serializer\Groups({"text_output"})
+     * @ApiProperty
+     * @Serializer\Groups({"text_output", "text_input"})
+     * @Assert\DateTime
      */
     protected $createdAt;
 
